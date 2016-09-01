@@ -1,9 +1,9 @@
 //
 //  main.m
-//  SinkOrSwimiOSInterfaceBuilding
+//  SMUExampleOne
 //
-//  Created by Preston Tighe on 9/1/16.
-//  Copyright © 2016 Mobile Design Group. All rights reserved.
+//  Created by Eric Larson on 1/21/15.
+//  Copyright (c) 2015 Eric Larson. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

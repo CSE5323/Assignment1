@@ -15,6 +15,12 @@
 		C2062CBA1D78B7E4003C3C27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2062CB81D78B7E4003C3C27 /* LaunchScreen.storyboard */; };
 		C2062CC51D78B7E4003C3C27 /* SinkOrSwimiOSInterfaceBuildingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2062CC41D78B7E4003C3C27 /* SinkOrSwimiOSInterfaceBuildingTests.m */; };
 		C2062CD01D78B7E4003C3C27 /* SinkOrSwimiOSInterfaceBuildingUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2062CCF1D78B7E4003C3C27 /* SinkOrSwimiOSInterfaceBuildingUITests.m */; };
+		C2062CDE1D78B9DC003C3C27 /* ImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2062CDD1D78B9DC003C3C27 /* ImageModel.m */; };
+		C2062CE71D78BA85003C3C27 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2062CE01D78BA85003C3C27 /* CollectionViewCell.m */; };
+		C2062CE81D78BA85003C3C27 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2062CE21D78BA85003C3C27 /* CollectionViewController.m */; };
+		C2062CE91D78BA85003C3C27 /* ImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2062CE41D78BA85003C3C27 /* ImageModel.m */; };
+		C2062CEA1D78BA85003C3C27 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2062CE61D78BA85003C3C27 /* TableViewController.m */; };
+		C2062CF01D78BEE2003C3C27 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2062CED1D78BEE2003C3C27 /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +57,16 @@
 		C2062CCB1D78B7E4003C3C27 /* SinkOrSwimiOSInterfaceBuildingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SinkOrSwimiOSInterfaceBuildingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2062CCF1D78B7E4003C3C27 /* SinkOrSwimiOSInterfaceBuildingUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SinkOrSwimiOSInterfaceBuildingUITests.m; sourceTree = "<group>"; };
 		C2062CD11D78B7E4003C3C27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C2062CDD1D78B9DC003C3C27 /* ImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageModel.m; path = ../../SMUExampleOne/SMUExampleOne/ImageModel.m; sourceTree = "<group>"; };
+		C2062CDF1D78BA85003C3C27 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
+		C2062CE01D78BA85003C3C27 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
+		C2062CE11D78BA85003C3C27 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
+		C2062CE21D78BA85003C3C27 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
+		C2062CE31D78BA85003C3C27 /* ImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageModel.h; sourceTree = "<group>"; };
+		C2062CE41D78BA85003C3C27 /* ImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageModel.m; sourceTree = "<group>"; };
+		C2062CE51D78BA85003C3C27 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		C2062CE61D78BA85003C3C27 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		C2062CED1D78BEE2003C3C27 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +117,16 @@
 		C2062CA91D78B7E4003C3C27 /* SinkOrSwimiOSInterfaceBuilding */ = {
 			isa = PBXGroup;
 			children = (
+				C2062CED1D78BEE2003C3C27 /* Images.xcassets */,
+				C2062CDF1D78BA85003C3C27 /* CollectionViewCell.h */,
+				C2062CE01D78BA85003C3C27 /* CollectionViewCell.m */,
+				C2062CE11D78BA85003C3C27 /* CollectionViewController.h */,
+				C2062CE21D78BA85003C3C27 /* CollectionViewController.m */,
+				C2062CE31D78BA85003C3C27 /* ImageModel.h */,
+				C2062CE41D78BA85003C3C27 /* ImageModel.m */,
+				C2062CE51D78BA85003C3C27 /* TableViewController.h */,
+				C2062CE61D78BA85003C3C27 /* TableViewController.m */,
+				C2062CDD1D78B9DC003C3C27 /* ImageModel.m */,
 				C2062CAD1D78B7E4003C3C27 /* AppDelegate.h */,
 				C2062CAE1D78B7E4003C3C27 /* AppDelegate.m */,
 				C2062CB01D78B7E4003C3C27 /* ViewController.h */,
@@ -245,6 +271,7 @@
 			files = (
 				C2062CBA1D78B7E4003C3C27 /* LaunchScreen.storyboard in Resources */,
 				C2062CB71D78B7E4003C3C27 /* Assets.xcassets in Resources */,
+				C2062CF01D78BEE2003C3C27 /* Images.xcassets in Resources */,
 				C2062CB51D78B7E4003C3C27 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -271,8 +298,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2062CB21D78B7E4003C3C27 /* ViewController.m in Sources */,
+				C2062CE71D78BA85003C3C27 /* CollectionViewCell.m in Sources */,
+				C2062CE91D78BA85003C3C27 /* ImageModel.m in Sources */,
+				C2062CE81D78BA85003C3C27 /* CollectionViewController.m in Sources */,
 				C2062CAF1D78B7E4003C3C27 /* AppDelegate.m in Sources */,
 				C2062CAC1D78B7E4003C3C27 /* main.m in Sources */,
+				C2062CDE1D78B9DC003C3C27 /* ImageModel.m in Sources */,
+				C2062CEA1D78BA85003C3C27 /* TableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +528,7 @@
 				C2062CD61D78B7E4003C3C27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C2062CD71D78B7E4003C3C27 /* Build configuration list for PBXNativeTarget "SinkOrSwimiOSInterfaceBuildingTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +537,7 @@
 				C2062CD91D78B7E4003C3C27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C2062CDA1D78B7E4003C3C27 /* Build configuration list for PBXNativeTarget "SinkOrSwimiOSInterfaceBuildingUITests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +546,7 @@
 				C2062CDC1D78B7E4003C3C27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

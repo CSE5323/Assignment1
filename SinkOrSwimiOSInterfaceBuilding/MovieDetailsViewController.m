@@ -1,19 +1,16 @@
 #import <UIImageView+AFNetworking.h>
 #import <JLTMDbClient.h>
 #import "MovieDetailsViewController.h"
+#import "MovieReviewViewController.h"
 
 @interface MovieDetailsViewController ()
 
 @end
 
 @implementation MovieDetailsViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+- (IBAction)clickAddReview:(id)sender {
+    MovieReviewViewController *movieReviewViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MovieReviewViewController"];
+    [self.navigationController pushViewController:movieReviewViewController animated:YES];
 }
 
 - (void)viewDidLoad {

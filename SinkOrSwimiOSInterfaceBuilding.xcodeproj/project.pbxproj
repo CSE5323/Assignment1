@@ -18,6 +18,7 @@
 		C2062CE81D78BA85003C3C27 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2062CE21D78BA85003C3C27 /* CollectionViewController.m */; };
 		C2062CEA1D78BA85003C3C27 /* MoviesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2062CE61D78BA85003C3C27 /* MoviesTableViewController.m */; };
 		C2062CF01D78BEE2003C3C27 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2062CED1D78BEE2003C3C27 /* Images.xcassets */; };
+		C25E96721D7ACAF300816F97 /* MovieReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C25E96711D7ACAF300816F97 /* MovieReviewViewController.m */; };
 		C2B09F5D1D7A478E0061069F /* ImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B09F5C1D7A478E0061069F /* ImageModel.m */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,8 @@
 		C2062CE51D78BA85003C3C27 /* MoviesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviesTableViewController.h; sourceTree = "<group>"; };
 		C2062CE61D78BA85003C3C27 /* MoviesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoviesTableViewController.m; sourceTree = "<group>"; };
 		C2062CED1D78BEE2003C3C27 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C25E96701D7ACAF300816F97 /* MovieReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieReviewViewController.h; sourceTree = "<group>"; };
+		C25E96711D7ACAF300816F97 /* MovieReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieReviewViewController.m; sourceTree = "<group>"; };
 		C2B09F5B1D7A478E0061069F /* ImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageModel.h; sourceTree = "<group>"; };
 		C2B09F5C1D7A478E0061069F /* ImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageModel.m; sourceTree = "<group>"; };
 		DAEB74D869BFC8498E166523 /* libPods-SinkOrSwimiOSInterfaceBuilding.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SinkOrSwimiOSInterfaceBuilding.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,6 +151,8 @@
 				C2062CAE1D78B7E4003C3C27 /* AppDelegate.m */,
 				C2062CB01D78B7E4003C3C27 /* MovieDetailsViewController.h */,
 				C2062CB11D78B7E4003C3C27 /* MovieDetailsViewController.m */,
+				C25E96701D7ACAF300816F97 /* MovieReviewViewController.h */,
+				C25E96711D7ACAF300816F97 /* MovieReviewViewController.m */,
 				C2062CB31D78B7E4003C3C27 /* Main.storyboard */,
 				C2062CBB1D78B7E4003C3C27 /* Info.plist */,
 				C2062CAA1D78B7E4003C3C27 /* Supporting Files */,
@@ -368,6 +373,7 @@
 				C2062CAF1D78B7E4003C3C27 /* AppDelegate.m in Sources */,
 				C2062CAC1D78B7E4003C3C27 /* main.m in Sources */,
 				C2062CEA1D78BA85003C3C27 /* MoviesTableViewController.m in Sources */,
+				C25E96721D7ACAF300816F97 /* MovieReviewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

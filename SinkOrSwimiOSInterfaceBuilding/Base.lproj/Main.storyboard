@@ -117,6 +117,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="44"/>
                                 <state key="normal" title="Add Review"/>
+                                <connections>
+                                    <action selector="clickAddReview:" destination="G5t-hl-Kjb" eventType="touchDown" id="bpB-9Y-gRH"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -153,7 +156,29 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fiY-L0-WKB" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="96" y="65"/>
+            <point key="canvasLocation" x="1152" y="758"/>
+        </scene>
+        <!--Movie Review-->
+        <scene sceneID="WCi-Cy-47x">
+            <objects>
+                <viewController storyboardIdentifier="MovieReviewViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4AM-be-qz6" customClass="MovieReviewViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dFV-CB-hxC"/>
+                        <viewControllerLayoutGuide type="bottom" id="x9H-uv-jBK"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="Ss8-3m-awR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Movie Review" id="Z8e-zF-GvC">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="eYl-HO-TVP"/>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XZs-W7-RZu" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1152" y="758"/>
         </scene>
     </scenes>
 </document>

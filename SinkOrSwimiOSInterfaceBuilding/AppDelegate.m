@@ -1,12 +1,5 @@
-//
-//  AppDelegate.m
-//  SinkOrSwimiOSInterfaceBuilding
-//
-//  Created by Preston Tighe on 9/1/16.
-//  Copyright © 2016 Mobile Design Group. All rights reserved.
-//
-
 #import "AppDelegate.h"
+#import <JLTMDbClient.h>
 
 @interface AppDelegate ()
 
@@ -17,6 +10,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [[JLTMDbClient sharedAPIInstance] setAPIKey:@"9f99b0516fe29dd74960fecec345ebfe"];
     return YES;
 }
 

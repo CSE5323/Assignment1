@@ -7,20 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01B02E36B151DA4B9A10A2D8 /* libPods-SinkOrSwimiOSInterfaceBuilding.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEB74D869BFC8498E166523 /* libPods-SinkOrSwimiOSInterfaceBuilding.a */; };
 		C2062CAC1D78B7E4003C3C27 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C2062CAB1D78B7E4003C3C27 /* main.m */; };
 		C2062CAF1D78B7E4003C3C27 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2062CAE1D78B7E4003C3C27 /* AppDelegate.m */; };
-		C2062CB21D78B7E4003C3C27 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2062CB11D78B7E4003C3C27 /* ViewController.m */; };
+		C2062CB21D78B7E4003C3C27 /* MovieDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2062CB11D78B7E4003C3C27 /* MovieDetailsViewController.m */; };
 		C2062CB51D78B7E4003C3C27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2062CB31D78B7E4003C3C27 /* Main.storyboard */; };
-		C2062CB71D78B7E4003C3C27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2062CB61D78B7E4003C3C27 /* Assets.xcassets */; };
-		C2062CBA1D78B7E4003C3C27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2062CB81D78B7E4003C3C27 /* LaunchScreen.storyboard */; };
 		C2062CC51D78B7E4003C3C27 /* SinkOrSwimiOSInterfaceBuildingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2062CC41D78B7E4003C3C27 /* SinkOrSwimiOSInterfaceBuildingTests.m */; };
 		C2062CD01D78B7E4003C3C27 /* SinkOrSwimiOSInterfaceBuildingUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2062CCF1D78B7E4003C3C27 /* SinkOrSwimiOSInterfaceBuildingUITests.m */; };
-		C2062CDE1D78B9DC003C3C27 /* ImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2062CDD1D78B9DC003C3C27 /* ImageModel.m */; };
 		C2062CE71D78BA85003C3C27 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2062CE01D78BA85003C3C27 /* CollectionViewCell.m */; };
 		C2062CE81D78BA85003C3C27 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2062CE21D78BA85003C3C27 /* CollectionViewController.m */; };
-		C2062CE91D78BA85003C3C27 /* ImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2062CE41D78BA85003C3C27 /* ImageModel.m */; };
-		C2062CEA1D78BA85003C3C27 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2062CE61D78BA85003C3C27 /* TableViewController.m */; };
+		C2062CEA1D78BA85003C3C27 /* MoviesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2062CE61D78BA85003C3C27 /* MoviesTableViewController.m */; };
 		C2062CF01D78BEE2003C3C27 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2062CED1D78BEE2003C3C27 /* Images.xcassets */; };
+		C2B09F5D1D7A478E0061069F /* ImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B09F5C1D7A478E0061069F /* ImageModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,15 +39,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		15B5B739DC0CED65E3BB353E /* Pods-SinkOrSwimiOSInterfaceBuilding.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SinkOrSwimiOSInterfaceBuilding.release.xcconfig"; path = "Pods/Target Support Files/Pods-SinkOrSwimiOSInterfaceBuilding/Pods-SinkOrSwimiOSInterfaceBuilding.release.xcconfig"; sourceTree = "<group>"; };
+		71F4C8DFA1069C952392D39E /* Pods-SinkOrSwimiOSInterfaceBuilding.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SinkOrSwimiOSInterfaceBuilding.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SinkOrSwimiOSInterfaceBuilding/Pods-SinkOrSwimiOSInterfaceBuilding.debug.xcconfig"; sourceTree = "<group>"; };
 		C2062CA71D78B7E4003C3C27 /* SinkOrSwimiOSInterfaceBuilding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SinkOrSwimiOSInterfaceBuilding.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2062CAB1D78B7E4003C3C27 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C2062CAD1D78B7E4003C3C27 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C2062CAE1D78B7E4003C3C27 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C2062CB01D78B7E4003C3C27 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C2062CB11D78B7E4003C3C27 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C2062CB01D78B7E4003C3C27 /* MovieDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieDetailsViewController.h; sourceTree = "<group>"; };
+		C2062CB11D78B7E4003C3C27 /* MovieDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieDetailsViewController.m; sourceTree = "<group>"; };
 		C2062CB41D78B7E4003C3C27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C2062CB61D78B7E4003C3C27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C2062CB91D78B7E4003C3C27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C2062CBB1D78B7E4003C3C27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C2062CC01D78B7E4003C3C27 /* SinkOrSwimiOSInterfaceBuildingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SinkOrSwimiOSInterfaceBuildingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2062CC41D78B7E4003C3C27 /* SinkOrSwimiOSInterfaceBuildingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SinkOrSwimiOSInterfaceBuildingTests.m; sourceTree = "<group>"; };
@@ -57,16 +55,16 @@
 		C2062CCB1D78B7E4003C3C27 /* SinkOrSwimiOSInterfaceBuildingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SinkOrSwimiOSInterfaceBuildingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2062CCF1D78B7E4003C3C27 /* SinkOrSwimiOSInterfaceBuildingUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SinkOrSwimiOSInterfaceBuildingUITests.m; sourceTree = "<group>"; };
 		C2062CD11D78B7E4003C3C27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C2062CDD1D78B9DC003C3C27 /* ImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageModel.m; path = ../../SMUExampleOne/SMUExampleOne/ImageModel.m; sourceTree = "<group>"; };
 		C2062CDF1D78BA85003C3C27 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
 		C2062CE01D78BA85003C3C27 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 		C2062CE11D78BA85003C3C27 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
 		C2062CE21D78BA85003C3C27 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
-		C2062CE31D78BA85003C3C27 /* ImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageModel.h; sourceTree = "<group>"; };
-		C2062CE41D78BA85003C3C27 /* ImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageModel.m; sourceTree = "<group>"; };
-		C2062CE51D78BA85003C3C27 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
-		C2062CE61D78BA85003C3C27 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		C2062CE51D78BA85003C3C27 /* MoviesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviesTableViewController.h; sourceTree = "<group>"; };
+		C2062CE61D78BA85003C3C27 /* MoviesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoviesTableViewController.m; sourceTree = "<group>"; };
 		C2062CED1D78BEE2003C3C27 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C2B09F5B1D7A478E0061069F /* ImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageModel.h; sourceTree = "<group>"; };
+		C2B09F5C1D7A478E0061069F /* ImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageModel.m; sourceTree = "<group>"; };
+		DAEB74D869BFC8498E166523 /* libPods-SinkOrSwimiOSInterfaceBuilding.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SinkOrSwimiOSInterfaceBuilding.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01B02E36B151DA4B9A10A2D8 /* libPods-SinkOrSwimiOSInterfaceBuilding.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +93,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4939A8BF65B4FD11B3A9CD4E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DAEB74D869BFC8498E166523 /* libPods-SinkOrSwimiOSInterfaceBuilding.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B762F78B3815E5B40E7B44B6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				71F4C8DFA1069C952392D39E /* Pods-SinkOrSwimiOSInterfaceBuilding.debug.xcconfig */,
+				15B5B739DC0CED65E3BB353E /* Pods-SinkOrSwimiOSInterfaceBuilding.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		C2062C9E1D78B7E4003C3C27 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +117,8 @@
 				C2062CC31D78B7E4003C3C27 /* SinkOrSwimiOSInterfaceBuildingTests */,
 				C2062CCE1D78B7E4003C3C27 /* SinkOrSwimiOSInterfaceBuildingUITests */,
 				C2062CA81D78B7E4003C3C27 /* Products */,
+				B762F78B3815E5B40E7B44B6 /* Pods */,
+				4939A8BF65B4FD11B3A9CD4E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,23 +135,20 @@
 		C2062CA91D78B7E4003C3C27 /* SinkOrSwimiOSInterfaceBuilding */ = {
 			isa = PBXGroup;
 			children = (
+				C2B09F5B1D7A478E0061069F /* ImageModel.h */,
+				C2B09F5C1D7A478E0061069F /* ImageModel.m */,
 				C2062CED1D78BEE2003C3C27 /* Images.xcassets */,
 				C2062CDF1D78BA85003C3C27 /* CollectionViewCell.h */,
 				C2062CE01D78BA85003C3C27 /* CollectionViewCell.m */,
 				C2062CE11D78BA85003C3C27 /* CollectionViewController.h */,
 				C2062CE21D78BA85003C3C27 /* CollectionViewController.m */,
-				C2062CE31D78BA85003C3C27 /* ImageModel.h */,
-				C2062CE41D78BA85003C3C27 /* ImageModel.m */,
-				C2062CE51D78BA85003C3C27 /* TableViewController.h */,
-				C2062CE61D78BA85003C3C27 /* TableViewController.m */,
-				C2062CDD1D78B9DC003C3C27 /* ImageModel.m */,
+				C2062CE51D78BA85003C3C27 /* MoviesTableViewController.h */,
+				C2062CE61D78BA85003C3C27 /* MoviesTableViewController.m */,
 				C2062CAD1D78B7E4003C3C27 /* AppDelegate.h */,
 				C2062CAE1D78B7E4003C3C27 /* AppDelegate.m */,
-				C2062CB01D78B7E4003C3C27 /* ViewController.h */,
-				C2062CB11D78B7E4003C3C27 /* ViewController.m */,
+				C2062CB01D78B7E4003C3C27 /* MovieDetailsViewController.h */,
+				C2062CB11D78B7E4003C3C27 /* MovieDetailsViewController.m */,
 				C2062CB31D78B7E4003C3C27 /* Main.storyboard */,
-				C2062CB61D78B7E4003C3C27 /* Assets.xcassets */,
-				C2062CB81D78B7E4003C3C27 /* LaunchScreen.storyboard */,
 				C2062CBB1D78B7E4003C3C27 /* Info.plist */,
 				C2062CAA1D78B7E4003C3C27 /* Supporting Files */,
 			);
@@ -173,9 +188,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C2062CD41D78B7E4003C3C27 /* Build configuration list for PBXNativeTarget "SinkOrSwimiOSInterfaceBuilding" */;
 			buildPhases = (
+				6767A49F5D41FCA97D30D1AE /* [CP] Check Pods Manifest.lock */,
 				C2062CA31D78B7E4003C3C27 /* Sources */,
 				C2062CA41D78B7E4003C3C27 /* Frameworks */,
 				C2062CA51D78B7E4003C3C27 /* Resources */,
+				6951BF60A0CB5F4FF7F9DDE3 /* [CP] Embed Pods Frameworks */,
+				6B685DBAD64A756A4CB26565 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -269,8 +287,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2062CBA1D78B7E4003C3C27 /* LaunchScreen.storyboard in Resources */,
-				C2062CB71D78B7E4003C3C27 /* Assets.xcassets in Resources */,
 				C2062CF01D78BEE2003C3C27 /* Images.xcassets in Resources */,
 				C2062CB51D78B7E4003C3C27 /* Main.storyboard in Resources */,
 			);
@@ -292,19 +308,66 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6767A49F5D41FCA97D30D1AE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6951BF60A0CB5F4FF7F9DDE3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SinkOrSwimiOSInterfaceBuilding/Pods-SinkOrSwimiOSInterfaceBuilding-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6B685DBAD64A756A4CB26565 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SinkOrSwimiOSInterfaceBuilding/Pods-SinkOrSwimiOSInterfaceBuilding-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C2062CA31D78B7E4003C3C27 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2062CB21D78B7E4003C3C27 /* ViewController.m in Sources */,
+				C2062CB21D78B7E4003C3C27 /* MovieDetailsViewController.m in Sources */,
 				C2062CE71D78BA85003C3C27 /* CollectionViewCell.m in Sources */,
-				C2062CE91D78BA85003C3C27 /* ImageModel.m in Sources */,
+				C2B09F5D1D7A478E0061069F /* ImageModel.m in Sources */,
 				C2062CE81D78BA85003C3C27 /* CollectionViewController.m in Sources */,
 				C2062CAF1D78B7E4003C3C27 /* AppDelegate.m in Sources */,
 				C2062CAC1D78B7E4003C3C27 /* main.m in Sources */,
-				C2062CDE1D78B9DC003C3C27 /* ImageModel.m in Sources */,
-				C2062CEA1D78BA85003C3C27 /* TableViewController.m in Sources */,
+				C2062CEA1D78BA85003C3C27 /* MoviesTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,14 +409,6 @@
 				C2062CB41D78B7E4003C3C27 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		C2062CB81D78B7E4003C3C27 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C2062CB91D78B7E4003C3C27 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -443,6 +498,7 @@
 		};
 		C2062CD51D78B7E4003C3C27 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 71F4C8DFA1069C952392D39E /* Pods-SinkOrSwimiOSInterfaceBuilding.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SinkOrSwimiOSInterfaceBuilding/Info.plist;
@@ -454,6 +510,7 @@
 		};
 		C2062CD61D78B7E4003C3C27 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 15B5B739DC0CED65E3BB353E /* Pods-SinkOrSwimiOSInterfaceBuilding.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SinkOrSwimiOSInterfaceBuilding/Info.plist;

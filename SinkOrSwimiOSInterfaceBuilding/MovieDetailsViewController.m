@@ -2,12 +2,25 @@
 #import <JLTMDbClient.h>
 #import "MovieDetailsViewController.h"
 #import "MovieReviewViewController.h"
+#import "MovieReview.h"
 
 @interface MovieDetailsViewController ()
+@property (weak, nonatomic) IBOutlet UITableView *reviewsTable;
 
 @end
 
 @implementation MovieDetailsViewController
+
+@synthesize movieReviews = _movieReviews;
+
+-(NSMutableArray*)movieReviews{
+    
+    if(!_movieReviews)
+        _movieReviews = [[NSMutableArray alloc] init];
+    
+    return _movieReviews;
+}
+
 - (IBAction)clickAddReview:(id)sender {
     MovieReviewViewController *movieReviewViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MovieReviewViewController"];
     [self.navigationController pushViewController:movieReviewViewController animated:YES];
@@ -32,6 +45,9 @@
         }else
             [errorAlertView show];
     }];
+    
+    //setting up reviews table
+    self.reviewsTable.rowHeight = 40.0f;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,8 +58,26 @@
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     self.movieDescriptionTextView.text = self.movieDict[@"overview"];
-    self.movieDescriptionTextView.font = [UIFont systemFontOfSize:17];
-    self.movieDescriptionTextView.textColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
+    self.movieDescriptionTextView.font = [UIFont systemFontOfSize:14];
+    self.movieDescriptionTextView.textColor = [UIColor lightGrayColor];
+    
+}
+
+- (NSInteger)tableView:(UITableView *)reviesTable numberOfRowsInSection:(NSInteger)section {
+    return self.movieReviews.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)reviewsTable cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"MovieCell";
+    
+    UITableViewCell *cell = [reviewsTable dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (!cell)
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    
+    cell.textLabel.text = [self.movieReviews[indexPath.row] getTitle];
+    cell.textLabel.textColor = [UIColor darkGrayColor];
+    cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    return cell;
 }
 
 @end

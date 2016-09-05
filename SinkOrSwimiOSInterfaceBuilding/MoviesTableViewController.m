@@ -2,6 +2,7 @@
 #import <JLTMDbClient.h>
 #import "MoviesTableViewController.h"
 #import "MovieDetailsViewController.h"
+#import "SWRevealViewController.h"
 
 @interface MoviesTableViewController ()
 
@@ -18,6 +19,15 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     [self refresh];
+    
+    //sidebar menu
+    SWRevealViewController *revealViewController = self.revealViewController;
+    if ( revealViewController )
+    {
+        [self.sidebarButton setTarget: self.revealViewController];
+        [self.sidebarButton setAction: @selector( revealToggle: )];
+        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,7 +50,7 @@
     
     NSDictionary *movieDict = self.moviesArray[indexPath.row];
     cell.textLabel.text = movieDict[@"original_title"];
-    cell.textLabel.textColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
+    cell.textLabel.textColor = [UIColor darkGrayColor];
     cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
     if (movieDict[@"poster_path"] != [NSNull null]) {
         NSString *imageUrl = [self.imagesBaseUrlString stringByAppendingString:movieDict[@"poster_path"]];

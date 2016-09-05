@@ -15,6 +15,9 @@
     
     [self loadConfiguration];
     self.tableView.rowHeight = 60.0f;
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval: 10.0 target:self selector:@selector(refresh) userInfo:nil repeats:YES];
+    
+    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     [self refresh];

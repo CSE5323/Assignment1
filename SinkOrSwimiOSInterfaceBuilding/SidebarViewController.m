@@ -16,8 +16,8 @@
 @implementation SidebarViewController
 
 -(NSArray*) menuItems {
-    if(!_menuItems) {
-        _menuItems = @[@"title", @"popularMovies", @"upcomingMovies", @"topRatedMovies", @"appSettings", @"numOfMovies", @"numOfMoviesPicker", @"numOfReviews", @"numOfReviewsStepper", @"tableType", @"nightMode"];
+    if(!_menuItems) {   //using lazy instantiation to set an array with the cell identifiers
+        _menuItems = @[@"title", @"popularMovies", @"upcomingMovies", @"topRatedMovies", @"appSettings", @"numOfMovies", @"numOfMoviesPicker", @"numOfReviews", @"numOfReviewsStepper", @"viewType"];
     }
     return _menuItems;
 }

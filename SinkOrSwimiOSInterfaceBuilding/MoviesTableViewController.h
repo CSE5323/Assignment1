@@ -1,4 +1,5 @@
 #import <UIKit/UIKit.h>
+#import "SWRevealViewController.h"
 
 @interface MoviesTableViewController : UITableViewController <UIAlertViewDelegate>
 

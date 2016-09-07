@@ -2,7 +2,7 @@
 #import <JLTMDbClient.h>
 #import "MoviesTableViewController.h"
 #import "MovieDetailsViewController.h"
-#import "SWRevealViewController.h"
+
 
 @interface MoviesTableViewController ()
 
@@ -25,6 +25,7 @@
     
     //sidebar menu
     SWRevealViewController *revealViewController = self.revealViewController;
+    //revealViewController.delegate = self;
     if ( revealViewController )
     {
         [self.sidebarButton setTarget: self.revealViewController];
@@ -96,20 +97,13 @@
     
     
     NSString* option = optionsArray[self.categoryCounter];
-    self.categoryCounter++;
     
-    if(self.categoryCounter == 3){
+    if(self.mainNavItem.title = @"Popular Movies"){
         self.categoryCounter = 0;
-    }
-    
-    if(option == kJLTMDbMoviePopular){
-        self.mainNavItem.title = @"Popular Movies";
-    }else if(option == kJLTMDbMovieUpcoming){
-        self.mainNavItem.title = @"Upcoming Movies";
-    }else if(option == kJLTMDbMovieTopRated){
-        self.mainNavItem.title = @"Top Rated Movies";
-    }else{
-        self.mainNavItem.title = @"Movies";
+    }else if(self.mainNavItem.title = @"Upcoming Movies"){
+        self.categoryCounter = 1;
+    }else if(self.mainNavItem.title = @"Top Rated Movies"){
+        self.categoryCounter = 2;
     }
     
     [[JLTMDbClient sharedAPIInstance] GET:option withParameters:nil andResponseBlock:^(id response, NSError *error) {

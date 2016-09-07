@@ -60,4 +60,13 @@
     return cell;
 }
 
+#pragma mark - Navigation
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    UINavigationController *moviesViewController = (UINavigationController*)segue.destinationViewController;
+    moviesViewController.title = [[self.menuItems objectAtIndex:indexPath.row] capitalizedString];
+}
+
 @end

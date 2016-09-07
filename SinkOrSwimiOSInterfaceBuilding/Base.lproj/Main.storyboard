@@ -161,6 +161,9 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="GTy-ZR-CvI" secondAttribute="trailing" id="jPG-cS-Lfp"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Id9-HV-5CI" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="Fri-Nq-gUC"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="upcomingMovies" id="8HU-hL-xgL">
                                 <rect key="frame" x="0.0" y="116" width="600" height="44"/>
@@ -183,6 +186,9 @@
                                         <constraint firstItem="Mqp-rm-l1g" firstAttribute="leading" secondItem="We7-4u-C1A" secondAttribute="leadingMargin" constant="20" id="pQM-KT-fcX"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Id9-HV-5CI" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="Z83-uq-z8J"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="topRatedMovies" id="BJD-od-Wga">
                                 <rect key="frame" x="0.0" y="160" width="600" height="44"/>
@@ -204,6 +210,9 @@
                                         <constraint firstItem="r04-S2-Cj7" firstAttribute="top" secondItem="YTg-os-Rvx" secondAttribute="topMargin" id="fy4-bv-plr"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Id9-HV-5CI" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="sun-N9-1nO"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="appSettings" id="eb6-jD-8a6">
                                 <rect key="frame" x="0.0" y="204" width="600" height="44"/>
@@ -362,7 +371,7 @@
                                 <rect key="frame" x="0.0" y="424" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4sK-7c-VRS" id="iTZ-6H-aq2">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collection View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dL4-5g-Qc1">
@@ -683,4 +692,7 @@
     <resources>
         <image name="menu" width="28" height="20"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="sun-N9-1nO"/>
+    </inferredMetricsTieBreakers>
 </document>

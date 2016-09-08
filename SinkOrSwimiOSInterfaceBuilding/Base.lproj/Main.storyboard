@@ -284,8 +284,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="42p-HI-4oM">
-                                                    <rect key="frame" x="48" y="8" width="444" height="27.5"/>
+                                                <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="42p-HI-4oM">
+                                                    <rect key="frame" x="48" y="7" width="444" height="27.5"/>
                                                 </pickerView>
                                             </subviews>
                                             <constraints>
@@ -303,6 +303,9 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Id9-HV-5CI" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="mR3-Zq-qgz"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="numOfReviews" id="v81-4s-ArL">
                                         <rect key="frame" x="0.0" y="308" width="600" height="44"/>

@@ -26,7 +26,7 @@
 
 -(NSArray*) data {
     if(!_data) {   //using lazy instantiation to set an array with the cell identifiers
-        _data = @[@"10", @"20",@"30"];
+        _data = @[@"10", @"15",@"20"];
     }
     return _data;
 }
@@ -66,7 +66,7 @@
     {
         pickerLabel = [[UILabel alloc] init];
         
-        pickerLabel.font = [UIFont fontWithName:@"SourceSansPro-Semibold"                size:16];
+        pickerLabel.font = [UIFont fontWithName:@"SourceSansPro-Semibold"                size:14];
         
         pickerLabel.textAlignment=NSTextAlignmentCenter;
     }
@@ -114,6 +114,14 @@
         controller.categoryCounter = 1;
     } else if( [name  isEqual: @"topRatedMovies"] ) {
         controller.categoryCounter = 2;
+    } else if( [name  isEqual: @"numOfMoviesPicker"] ) {
+        if([self.numMoviesPicker.description  isEqualToString: @"10"]) {
+            controller.numMovies = 10;
+        } else if([self.numMoviesPicker.description isEqualToString:@"15"]) {
+            controller.numMovies = 15;
+        } else if([self.numMoviesPicker.description isEqualToString:@"20"]) {
+            controller.numMovies = 20;
+        }
     }
     
     

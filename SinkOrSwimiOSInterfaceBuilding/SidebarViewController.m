@@ -7,9 +7,12 @@
 //
 
 #import "SidebarViewController.h"
+#import "MoviesTableViewController.h"
+#import "CollectionViewController.h"
 
 @interface SidebarViewController ()
 
+@property (strong, nonatomic) IBOutlet UISwitch *type_switcher;
 @property (nonatomic, strong) NSArray *menuItems;
 @end
 
@@ -39,6 +42,23 @@
 {
     [super didReceiveMemoryWarning];
 }
+
+- (IBAction)switched:(UISwitch *)sender {
+    
+//    MoviesTableViewController *movieTableViewController = [[MoviesTableViewController alloc] init];
+//    
+//    CollectionViewController *collectionViewController = [[CollectionViewController alloc] init];
+//    
+//    if([self.type_switcher isOn]) {
+//
+//        [self.navigationController pushViewController:collectionViewController animated:YES];
+//    }
+//    else {
+//        
+//        [self.navigationController pushViewController:movieTableViewController animated:YES];
+//    }
+}
+
 
 #pragma mark - Table view data source
 

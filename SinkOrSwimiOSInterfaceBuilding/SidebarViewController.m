@@ -102,13 +102,20 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    UINavigationController *moviesViewController = (UINavigationController*)segue.destinationViewController;
-    if( indexPath == 2) {
-        moviesViewController.title = @"Popular Movies";
+    
+    NSString *name = [self.menuItems objectAtIndex:indexPath.row];
+    
+    UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
+    MoviesTableViewController *controller = (MoviesTableViewController *)navController.topViewController;
+    
+    if( [name  isEqual: @"popularMovies"] ) {
+        controller.categoryCounter = 0;
+    } else if( [name  isEqual: @"upcomingMovies"] ) {
+        controller.categoryCounter = 1;
+    } else if( [name  isEqual: @"topRatedMovies"] ) {
+        controller.categoryCounter = 2;
     }
-    if( indexPath == 2) {
-        moviesViewController.title = @"Popular Movies";
-    }
+    
     
 }
 

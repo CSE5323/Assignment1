@@ -7,10 +7,12 @@
 //
 
 #import "SidebarViewController.h"
+#import "MoviesTableViewController.h"
 
 @interface SidebarViewController ()
 
 @property (nonatomic, strong) NSArray *menuItems;
+@property (nonatomic, strong) NSArray *data;
 @end
 
 @implementation SidebarViewController
@@ -20,6 +22,13 @@
         _menuItems = @[@"title", @"popularMovies", @"upcomingMovies", @"topRatedMovies", @"appSettings", @"numOfMovies", @"numOfMoviesPicker", @"numOfReviews", @"numOfReviewsStepper", @"viewType"];
     }
     return _menuItems;
+}
+
+-(NSArray*) data {
+    if(!_data) {   //using lazy instantiation to set an array with the cell identifiers
+        _data = @[@"10", @"20",@"30"];
+    }
+    return _data;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -33,32 +42,60 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //Picker
+    self.numMoviesPicker.delegate = self;
+    self.numMoviesPicker.dataSource = self;
 }
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView {
+    
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component {
+    
+    return 3;
+}
+
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
+{
+    UILabel* pickerLabel = (UILabel*)view;
+    
+    if (!pickerLabel)
+    {
+        pickerLabel = [[UILabel alloc] init];
+        
+        pickerLabel.font = [UIFont fontWithName:@"SourceSansPro-Semibold"                size:16];
+        
+        pickerLabel.textAlignment=NSTextAlignmentCenter;
+    }
+    [pickerLabel setText:[self.data objectAtIndex:row]];
+    
+    return pickerLabel;
+}
+
+//- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+//    NSString * title = nil;
+//    
+//    switch(row) {
+//        case 0:
+//            title = @"10";
+//            break;
+//        case 1:
+//            title = @"20";
+//            break;
+//        case 2:
+//            title = @"30";
+//            break;
+//    }
+//    return title;
+//}
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
 }
-
-#pragma mark - Table view data source
-
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//    return 1;
-//}
-
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//    return self.menuItems.count;
-//}
-
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    NSString *CellIdentifier = [self.menuItems objectAtIndex:indexPath.row];
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-//    
-//    return cell;
-//}
 
 #pragma mark - Navigation
 
@@ -66,7 +103,13 @@
     
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     UINavigationController *moviesViewController = (UINavigationController*)segue.destinationViewController;
-    moviesViewController.title = [[self.menuItems objectAtIndex:indexPath.row] capitalizedString];
+    if( indexPath == 2) {
+        moviesViewController.title = @"Popular Movies";
+    }
+    if( indexPath == 2) {
+        moviesViewController.title = @"Popular Movies";
+    }
+    
 }
 
 @end

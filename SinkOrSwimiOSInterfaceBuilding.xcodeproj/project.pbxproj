@@ -23,6 +23,7 @@
 		D320EC191D7D4D890042F2D5 /* MovieReview.m in Sources */ = {isa = PBXBuildFile; fileRef = D320EC181D7D4D890042F2D5 /* MovieReview.m */; };
 		D320EC1D1D7E0D4A0042F2D5 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D320EC1C1D7E0D4A0042F2D5 /* SWRevealViewController.m */; };
 		D320EC271D7E229F0042F2D5 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D320EC261D7E229F0042F2D5 /* SidebarViewController.m */; };
+		FA14E78E1D81B309008EC284 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA14E78D1D81B309008EC284 /* ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,8 @@
 		D320EC251D7E229F0042F2D5 /* SidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarViewController.h; sourceTree = "<group>"; };
 		D320EC261D7E229F0042F2D5 /* SidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarViewController.m; sourceTree = "<group>"; };
 		DAEB74D869BFC8498E166523 /* libPods-SinkOrSwimiOSInterfaceBuilding.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SinkOrSwimiOSInterfaceBuilding.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA14E78C1D81B309008EC284 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		FA14E78D1D81B309008EC284 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +173,8 @@
 				C2062CB31D78B7E4003C3C27 /* Main.storyboard */,
 				C2062CBB1D78B7E4003C3C27 /* Info.plist */,
 				C2062CAA1D78B7E4003C3C27 /* Supporting Files */,
+				FA14E78C1D81B309008EC284 /* ViewController.h */,
+				FA14E78D1D81B309008EC284 /* ViewController.m */,
 			);
 			path = SinkOrSwimiOSInterfaceBuilding;
 			sourceTree = "<group>";
@@ -395,6 +400,7 @@
 				C2062CE81D78BA85003C3C27 /* CollectionViewController.m in Sources */,
 				C2062CAF1D78B7E4003C3C27 /* AppDelegate.m in Sources */,
 				C2062CAC1D78B7E4003C3C27 /* main.m in Sources */,
+				FA14E78E1D81B309008EC284 /* ViewController.m in Sources */,
 				C2062CEA1D78BA85003C3C27 /* MoviesTableViewController.m in Sources */,
 				D320EC1D1D7E0D4A0042F2D5 /* SWRevealViewController.m in Sources */,
 				C25E96721D7ACAF300816F97 /* MovieReviewViewController.m in Sources */,

@@ -26,7 +26,7 @@ static NSString * const reuseIdentifier = @"ImageCollectCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self loadConfiguration];
+//    [self loadConfiguration];
     
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = NO;

@@ -46,8 +46,21 @@
             [errorAlertView show];
     }];
     
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected)];
+    singleTap.numberOfTapsRequired = 1;
+    [self.movieCoverImageView setUserInteractionEnabled:YES];
+    [self.movieCoverImageView addGestureRecognizer:singleTap];
+    
+    
+    
     //setting up reviews table
     self.reviewsTable.rowHeight = 40.0f;
+}
+
+
+-(void)tapDetected{
+    NSLog(@"single Tap on imageview");
+    [self performSegueWithIdentifier:@"MySegue" sender:self];
 }
 
 - (void)didReceiveMemoryWarning {

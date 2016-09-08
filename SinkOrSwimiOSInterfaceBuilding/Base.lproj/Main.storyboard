@@ -58,7 +58,9 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ggn-2Z-0pG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1152" y="1671"/>
+
+            <point key="canvasLocation" x="488" y="1575"/>
+
         </scene>
         <!--Movies-->
         <scene sceneID="0Gp-qL-SWs">
@@ -126,7 +128,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
-                            <tableViewSection id="sf0-7i-OLB">
+                            <tableViewSection id="7re-wv-of6">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="title" id="l7V-Hw-nxt">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -269,7 +271,7 @@
                                         </tableViewCellContentView>
                                         <animations/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="numOfMovies" id="G53-UI-Cfw">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="numOfMovies" id="G53-UI-Cfw">
                                         <rect key="frame" x="0.0" y="220" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G53-UI-Cfw" id="IvK-LX-nQe">
@@ -311,8 +313,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="42p-HI-4oM">
-                                                    <rect key="frame" x="48" y="8" width="444" height="28"/>
-                                                    <animations/>
+
+                                                    <rect key="frame" x="48" y="7" width="444" height="27.5"/>
                                                 </pickerView>
                                             </subviews>
                                             <animations/>
@@ -331,9 +333,12 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
-                                        <animations/>
+
+                                        <connections>
+                                            <segue destination="Id9-HV-5CI" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="mR3-Zq-qgz"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="numOfReviews" id="v81-4s-ArL">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="numOfReviews" id="v81-4s-ArL">
                                         <rect key="frame" x="0.0" y="308" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v81-4s-ArL" id="VKJ-Fy-wR5">
@@ -459,7 +464,8 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <outlet property="type_switcher" destination="Xeu-5m-dcL" id="t0C-m5-HUk"/>
+
+                        <outlet property="numMoviesPicker" destination="42p-HI-4oM" id="siV-1C-dYW"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FXe-cD-zS5" userLabel="First Responder" sceneMemberID="firstResponder"/>

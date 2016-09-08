@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SidebarViewController : UITableViewController
+@interface SidebarViewController : UITableViewController<UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UIPickerView *numMoviesPicker;
+
 
 
 @end

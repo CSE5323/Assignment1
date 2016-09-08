@@ -32,6 +32,18 @@
         [self.sidebarButton setAction: @selector( revealToggle: )];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
+    
+    self.numMovies = 10;
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,7 +54,7 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.moviesArray.count;
+    return self.numMovies;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -97,12 +109,13 @@
     
     NSString* option = optionsArray[self.categoryCounter];
     
-    if(self.mainNavItem.title == @"Popular Movies"){
-        self.categoryCounter = 0;
-    }else if(self.mainNavItem.title == @"Upcoming Movies"){
-        self.categoryCounter = 1;
-    }else if(self.mainNavItem.title == @"Top Rated Movies"){
-        self.categoryCounter = 2;
+
+    if(self.categoryCounter == 0){
+        self.mainNavItem.title = @"Popular Movies";
+    }else if(self.categoryCounter == 1){
+        self.mainNavItem.title = @"Upcoming Movies";
+    }else if(self.categoryCounter == 2){
+        self.mainNavItem.title = @"Top Rated Movies";
     }
     
     [[JLTMDbClient sharedAPIInstance] GET:option withParameters:nil andResponseBlock:^(id response, NSError *error) {

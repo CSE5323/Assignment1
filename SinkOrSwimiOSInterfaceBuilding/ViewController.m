@@ -12,9 +12,8 @@
 #import "MovieDetailsViewController.h"
 
 
-@interface ViewController ()
+@interface ViewController () <UIScrollViewDelegate>
 
-@property (strong, nonatomic) UIImageView* imageView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong,nonatomic) ImageModel* myImageModel;
 
@@ -23,34 +22,21 @@
 @implementation ViewController
 
 
-
--(ImageModel*)myImageModel{
+-(UIImageView*)imageView {
     
-    if(!_myImageModel)
-        _myImageModel =[ImageModel sharedInstance];
-    
-    return _myImageModel;
-}
-
--(NSString*)imageName{
-
-    if(!_imageName)
-        _imageName = @"Eric1";
-
-        return _imageName;
-}
-
--(UIImageView*)imageView{
-    
-    MovieDetailsViewController *detailsController = [[MovieDetailsViewController alloc] init];
     
     if(!_imageView)
-        _imageView = [[UIImageView alloc] initWithImage:[[ImageModel sharedInstance] getImageWithName:self.imageName]];
+    {
+        _imageView =[[UIImageView alloc] initWithImage:self.image];
+        _imageView.frame = CGRectMake(0,0,600,600);
+    }
+    
     return _imageView;
 }
 
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
@@ -65,7 +51,6 @@
     return self.imageView;
 }
 
-
 /*
  #pragma mark - Navigation
  
@@ -75,7 +60,5 @@
  // Pass the selected object to the new view controller.
  }
  */
-
-
 
 @end

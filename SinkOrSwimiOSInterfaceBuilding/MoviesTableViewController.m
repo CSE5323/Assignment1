@@ -13,8 +13,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self loadConfiguration];
+    
+    NSLog(@"hi");
+
     self.tableView.rowHeight = 60.0f;
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval: 10.0 target:self selector:@selector(refresh) userInfo:nil repeats:YES];
     
@@ -91,20 +93,21 @@
 #pragma mark - Private Methods
 
 - (void) loadConfiguration {
-    __block UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please try again later", @"") delegate:self cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Ok", @""), nil];
+//    __block UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please try again later", @"") delegate:self cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Ok", @""), nil];
     
     [[JLTMDbClient sharedAPIInstance] GET:kJLTMDbConfiguration withParameters:nil andResponseBlock:^(id response, NSError *error) {
         if (!error)
             self.imagesBaseUrlString = [response[@"images"][@"base_url"] stringByAppendingString:@"w92"];
         else
-            [errorAlertView show];
+            NSLog(@"error");
+//            [errorAlertView show];
     }];
 }
 
 
 - (void) refresh {
     NSArray *optionsArray = @[kJLTMDbMoviePopular, kJLTMDbMovieUpcoming, kJLTMDbMovieTopRated];
-    __block UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please try again later", @"") delegate:self cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Ok", @""), nil];
+//    __block UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please try again later", @"") delegate:self cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Ok", @""), nil];
     
     
     NSString* option = optionsArray[self.categoryCounter];
@@ -123,7 +126,8 @@
             self.moviesArray = response[@"results"];
             [self.tableView reloadData];
         }else
-            [errorAlertView show];
+            NSLog(@"error");
+//            [errorAlertView show];
         [self.refreshControl endRefreshing];
     }];
 }

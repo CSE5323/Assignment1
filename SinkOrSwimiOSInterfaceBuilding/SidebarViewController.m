@@ -163,8 +163,8 @@
     if([mySwitch isOn]) {
         
         NSLog(@"wtf");
-//        MovieReviewViewController *movieReviewViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MovieReviewViewController"];
-         [self.navigationController pushViewController:movieReviewViewController animated:YES];
+//        CollectionViewController *collectionViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"collectionViewController"];
+         [self.navigationController pushViewController:collectionViewController animated:YES];
     }
     
     

@@ -12,5 +12,10 @@
 
 @property (strong, nonatomic) NSString *imageName;
 
+@property (strong, nonatomic) UIImageView* imageView;
+
+@property (strong, nonatomic) UIImage* image;
+
+
 
 @end

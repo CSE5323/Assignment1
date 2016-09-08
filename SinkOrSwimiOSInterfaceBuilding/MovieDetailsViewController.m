@@ -3,6 +3,7 @@
 #import "MovieDetailsViewController.h"
 #import "MovieReviewViewController.h"
 #import "MovieReview.h"
+#import "ViewController.h"
 
 @interface MovieDetailsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *reviewsTable;
@@ -31,7 +32,7 @@
     // Do any additional setup after loading the view.
     self.navigationItem.title = self.movieTitle;
     __block NSString *imageBackdrop;
-    __block UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please try again later", @"") delegate:self cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Ok", @""), nil];
+//    __block UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please try again later", @"") delegate:self cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Ok", @""), nil];
     [[JLTMDbClient sharedAPIInstance] GET:kJLTMDbMovie withParameters:@{@"id":self.movieId} andResponseBlock:^(id response, NSError *error) {
         if (!error) {
             self.movieDict = response;
@@ -43,7 +44,8 @@
                 [self.movieCoverImageView setImageWithURL:[NSURL URLWithString:[imageBackdrop stringByAppendingString:self.movieDict[@"poster_path"]]]];
             }
         }else
-            [errorAlertView show];
+            NSLog(@"this sucks");
+//            [errorAlertView show];
     }];
     
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected)];
@@ -78,6 +80,21 @@
 
 - (NSInteger)tableView:(UITableView *)reviesTable numberOfRowsInSection:(NSInteger)section {
     return self.movieReviews.count;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    BOOL isVC = [[segue destinationViewController] isKindOfClass:[ViewController class]];
+    UIImage* my_image;
+    
+    if(isVC){
+//        UITableViewCell* cell = (UITableViewCell*)sender;
+        ViewController *vc = [segue destinationViewController];
+        my_image = [UIImage imageWithData:UIImagePNGRepresentation(self.movieCoverImageView.image)];
+        
+        vc.image = my_image;
+//        [vc.imageView setImage:my_image];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)reviewsTable cellForRowAtIndexPath:(NSIndexPath *)indexPath {

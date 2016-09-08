@@ -26,6 +26,7 @@ static NSString * const reuseIdentifier = @"ImageCollectCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
 //    [self loadConfiguration];
     
     // Uncomment the following line to preserve selection between presentations
@@ -79,13 +80,14 @@ static NSString * const reuseIdentifier = @"ImageCollectCell";
 }
 
 - (void) loadConfiguration {
-    __block UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please try again later", @"") delegate:self cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Ok", @""), nil];
+//    __block UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please try again later", @"") delegate:self cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Ok", @""), nil];
     
     [[JLTMDbClient sharedAPIInstance] GET:kJLTMDbConfiguration withParameters:nil andResponseBlock:^(id response, NSError *error) {
         if (!error)
             self.imagesBaseUrlString = [response[@"images"][@"base_url"] stringByAppendingString:@"w92"];
         else
-            [errorAlertView show];
+            NSLog(@"error");
+//            [errorAlertView show];
     }];
 }
 

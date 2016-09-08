@@ -8,9 +8,12 @@
 
 #import "SidebarViewController.h"
 #import "MoviesTableViewController.h"
+#import "CollectionViewController.h"
+
 
 @interface SidebarViewController ()
 
+@property (strong, nonatomic) IBOutlet UISwitch *switcher;
 @property (nonatomic, strong) NSArray *menuItems;
 @property (nonatomic, strong) NSArray *data;
 @end
@@ -52,6 +55,33 @@
     
     return 1;
 }
+
+
+//- (IBAction)switched:(UISwitch *)sender {
+//
+//    UISwitch *mySwitch = (UISwitch *)sender;
+//    
+//    MoviesTableViewController *movieTableViewController = [[MoviesTableViewController alloc] initWithNibName:nil bundle:nil];
+//    
+//    CollectionViewController *collectionViewController = [[CollectionViewController alloc] initWithNibName:nil bundle:nil];
+//    
+//    if([mySwitch isOn]) {
+//
+//        [self.navigationController pushViewController:collectionViewController animated:YES];
+//    }
+//    else {
+//        
+////        [self.navigationController pushViewController:movieTableViewController animated:YES];
+//    }
+//}
+
+
+#pragma mark - Table view data source
+
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+//{
+//    return 1;
+//}
 
 - (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component {
     
@@ -108,6 +138,10 @@
     UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
     MoviesTableViewController *controller = (MoviesTableViewController *)navController.topViewController;
     
+    CollectionViewController *collectionViewController =
+    (CollectionViewController *)navController.topViewController;
+    
+    
     if( [name  isEqual: @"popularMovies"] ) {
         controller.categoryCounter = 0;
     } else if( [name  isEqual: @"upcomingMovies"] ) {
@@ -123,6 +157,16 @@
             controller.numMovies = 20;
         }
     }
+    
+    UISwitch *mySwitch = (UISwitch *)sender;
+    
+    if([mySwitch isOn]) {
+        
+        NSLog(@"wtf");
+//        MovieReviewViewController *movieReviewViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MovieReviewViewController"];
+         [self.navigationController pushViewController:movieReviewViewController animated:YES];
+    }
+    
     
     
 }

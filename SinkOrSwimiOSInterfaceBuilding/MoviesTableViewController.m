@@ -102,7 +102,6 @@
 }
 
 
-
 - (void) refresh {
     NSArray *optionsArray = @[kJLTMDbMoviePopular, kJLTMDbMovieUpcoming, kJLTMDbMovieTopRated];
     __block UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please try again later", @"") delegate:self cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Ok", @""), nil];
@@ -110,6 +109,7 @@
     
     NSString* option = optionsArray[self.categoryCounter];
     
+
     if(self.categoryCounter == 0){
         self.mainNavItem.title = @"Popular Movies";
     }else if(self.categoryCounter == 1){

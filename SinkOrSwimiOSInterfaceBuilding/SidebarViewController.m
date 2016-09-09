@@ -127,6 +127,7 @@
     
     NSString *name = [self.menuItems objectAtIndex:indexPath.row];
     
+
 //    UINavigationController *navController = (UINavigationController*)[segue destinationViewController];
 //    MoviesCollectionViewController *eventsController = (MoviesCollectionViewController*)[navController topViewController];
     

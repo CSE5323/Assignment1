@@ -27,10 +27,14 @@
     
     [super viewDidLoad];
     
+    self.scrollView = [[UIScrollView alloc] initWithFrame:(CGRect){{0,0}, {600,600}}];
+    
     [self.scrollView addSubview:self.imageView];
     self.scrollView.contentSize = self.imageView.image.size;
     self.scrollView.minimumZoomScale = .1;
     self.scrollView.delegate = self;
+    
+    [self.view addSubview:self.scrollView];
     
 }
 

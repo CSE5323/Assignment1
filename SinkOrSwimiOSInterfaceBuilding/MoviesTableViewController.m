@@ -7,8 +7,8 @@
 
 @interface MoviesTableViewController ()
 
-@property (strong,nonatomic) MoviesModel* myMoviesModel;
 
+@property (strong,nonatomic) MoviesModel* myMoviesModel;
 @end
 
 @implementation MoviesTableViewController
@@ -135,5 +135,7 @@
     movieDetailViewController.movieTitle = movieDict[@"title"];
     [self.navigationController pushViewController:movieDetailViewController animated:YES];
 }
+
+
 
 @end

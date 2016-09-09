@@ -50,11 +50,17 @@
                             <outlet property="delegate" destination="Rua-Bx-jeh" id="Cdp-xh-uCV"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="Dli-Lo-4A1"/>
+                    <navigationItem key="navigationItem" title="Cover View" id="Dli-Lo-4A1">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="Txg-mX-olz" userLabel="Sidebar Button"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="sidebarButton2" destination="Txg-mX-olz" id="o3F-eP-bdo"/>
+                        <segue destination="VbI-O7-5xz" kind="show" identifier="first_segue" id="Dy4-sE-8q4"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ggn-2Z-0pG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="488" y="1669"/>
+            <point key="canvasLocation" x="292" y="1669"/>
         </scene>
         <!--Movies-->
         <scene sceneID="0Gp-qL-SWs">
@@ -66,11 +72,12 @@
                     <connections>
                         <outlet property="mainNavItem" destination="uNd-rX-80u" id="UV1-tg-TC6"/>
                         <outlet property="sidebarButton" destination="2AJ-Bw-4a7" id="92k-24-1u1"/>
+                        <segue destination="Rua-Bx-jeh" kind="show" identifier="second_segue" id="c6V-GT-xpF"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R1C-3q-3mr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="488" y="889"/>
+            <point key="canvasLocation" x="292" y="889"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iuy-gq-JIz">
@@ -81,7 +88,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="VbI-O7-5xz" kind="relationship" relationship="rootViewController" id="YK5-Xc-5XZ"/>
+                        <segue destination="VbI-O7-5xz" kind="relationship" relationship="rootViewController" id="w1v-FG-03Q"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rQb-lB-d7A" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -89,6 +96,7 @@
             <point key="canvasLocation" x="-386" y="889"/>
         </scene>
         <!--Movie Cover Large-->
+
         <scene sceneID="1zx-2Y-36t">
             <objects>
                 <viewController storyboardIdentifier="MovieCoverBigViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dXg-uG-y15" customClass="MovieCoverBigViewController" sceneMemberID="viewController">
@@ -443,7 +451,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FXe-cD-zS5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="488" y="82"/>
+            <point key="canvasLocation" x="292" y="82"/>
         </scene>
         <!--Detail-->
         <scene sceneID="tfa-YB-gEj">
@@ -610,7 +618,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fiY-L0-WKB" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1152" y="889"/>
+            <point key="canvasLocation" x="964" y="889"/>
         </scene>
         <!--Movie Review-->
         <scene sceneID="WCi-Cy-47x">
@@ -716,7 +724,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1152" y="82"/>
+            <point key="canvasLocation" x="964" y="82"/>
         </scene>
     </scenes>
     <resources>

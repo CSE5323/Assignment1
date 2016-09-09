@@ -6,7 +6,6 @@
 
 @interface MoviesTableViewController ()
 
-
 @end
 
 @implementation MoviesTableViewController

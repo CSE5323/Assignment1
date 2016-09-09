@@ -55,7 +55,7 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Cover View" id="Dli-Lo-4A1">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="Txg-mX-olz"/>
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="Txg-mX-olz" userLabel="Sidebar Button"/>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ggn-2Z-0pG" userLabel="First Responder" sceneMemberID="firstResponder"/>

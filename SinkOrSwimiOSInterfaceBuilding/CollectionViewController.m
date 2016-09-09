@@ -3,6 +3,7 @@
 #import "CollectionViewController.h"
 #import "ImageModel.h"
 #import "CollectionViewCell.h"
+#import "MoviesTableViewController.h"
 
 @interface CollectionViewController ()
 
@@ -25,9 +26,20 @@ static NSString * const reuseIdentifier = @"ImageCollectCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self loadConfiguration];
+    
+    //sidebar menu
+    SWRevealViewController *revealViewController = self.revealViewController;
+    //revealViewController.delegate = self;
+    if ( revealViewController )
+    {
+        [self.sidebarButton setTarget: self.revealViewController];
+        [self.sidebarButton setAction: @selector( revealToggle: )];
+        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    }
     
     
-//    [self loadConfiguration];
+    
     
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -39,6 +51,16 @@ static NSString * const reuseIdentifier = @"ImageCollectCell";
     //[self.collectionView registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
     // Do any additional setup after loading the view.
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+//    [super viewWillAppear:animated];
+//    
+//    self.tableView.dataSource = self;
+//    self.tableView.delegate = self;
+//    
+//    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -70,11 +92,28 @@ static NSString * const reuseIdentifier = @"ImageCollectCell";
 //}
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    MoviesTableViewController *moviesController = [[MoviesTableViewController alloc] init];
+    
+    static NSString *CellIdentifier = @"MovieCoverCell";
+    
+    
     CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
+    if (!cell)
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    
     // Configure the cell
+    NSDictionary *movieDict = self.moviesArray[indexPath.row];
+
     cell.backgroundColor = [UIColor blueColor];
-    cell.imageView.image = [self.myImageModel getImageWithName:[self.myImageModel getImageNameByIndex:indexPath.row]];
+//    cell.imageView.image = [self.myImageModel getImageWithName:[self.myImageModel getImageNameByIndex:indexPath.row]];
+    
+    if (movieDict[@"poster_path"] != [NSNull null]) {
+        NSString *imageUrl = [self.imagesBaseUrlString stringByAppendingString:movieDict[@"poster_path"]];
+        [cell.imageView setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"TMDB"]];
+    }
+    
     
     return cell;
 }

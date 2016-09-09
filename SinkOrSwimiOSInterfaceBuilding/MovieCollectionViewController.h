@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 
-@interface CollectionViewController : UICollectionViewController
+@interface MovieCollectionViewController : UICollectionViewController
 
 @property (copy, nonatomic) NSString *imagesBaseUrlString;
 

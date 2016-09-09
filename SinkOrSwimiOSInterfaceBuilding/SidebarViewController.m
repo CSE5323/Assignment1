@@ -8,7 +8,9 @@
 
 #import "SidebarViewController.h"
 #import "MoviesTableViewController.h"
-#import "CollectionViewController.h"
+#import "MovieCollectionViewController.h"
+#import "MoviesModel.h"
+#import <JLTMDbClient.h>
 
 
 @interface SidebarViewController ()
@@ -16,9 +18,19 @@
 @property (strong, nonatomic) IBOutlet UISwitch *switcher;
 @property (nonatomic, strong) NSArray *menuItems;
 @property (nonatomic, strong) NSArray *data;
+@property (strong,nonatomic) MoviesModel* myMoviesModel;
+
 @end
 
 @implementation SidebarViewController
+
+-(MoviesModel*)myMoviesModel{
+    
+    if(!_myMoviesModel)
+        _myMoviesModel =[MoviesModel sharedInstance];
+    
+    return _myMoviesModel;
+}
 
 -(NSArray*) menuItems {
     if(!_menuItems) {   //using lazy instantiation to set an array with the cell identifiers
@@ -63,11 +75,11 @@
 //    
 //    MoviesTableViewController *movieTableViewController = [[MoviesTableViewController alloc] initWithNibName:nil bundle:nil];
 //    
-//    CollectionViewController *collectionViewController = [[CollectionViewController alloc] initWithNibName:nil bundle:nil];
+//    MovieCollectionViewController *movieCollectionViewController = [[MovieCollectionViewController alloc] initWithNibName:nil bundle:nil];
 //    
 //    if([mySwitch isOn]) {
 //
-//        [self.navigationController pushViewController:collectionViewController animated:YES];
+//        [self.navigationController pushViewController:movieCollectionViewController animated:YES];
 //    }
 //    else {
 //        
@@ -135,36 +147,34 @@
     
     NSString *name = [self.menuItems objectAtIndex:indexPath.row];
     
-    UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
-    MoviesTableViewController *controller = (MoviesTableViewController *)navController.topViewController;
-    
-    CollectionViewController *collectionViewController =
-    (CollectionViewController *)navController.topViewController;
+    UINavigationController *navController = [segue destinationViewController];
+    MovieCollectionViewController *movieCollectionViewController = (MovieCollectionViewController *)navController.topViewController;
     
     
-    if( [name  isEqual: @"popularMovies"] ) {
-        controller.categoryCounter = 0;
-    } else if( [name  isEqual: @"upcomingMovies"] ) {
-        controller.categoryCounter = 1;
-    } else if( [name  isEqual: @"topRatedMovies"] ) {
-        controller.categoryCounter = 2;
-    } else if( [name  isEqual: @"numOfMoviesPicker"] ) {
-        if([self.numMoviesPicker.description  isEqualToString: @"10"]) {
-            controller.numMovies = 10;
-        } else if([self.numMoviesPicker.description isEqualToString:@"15"]) {
-            controller.numMovies = 15;
-        } else if([self.numMoviesPicker.description isEqualToString:@"20"]) {
-            controller.numMovies = 20;
-        }
+    if( [name isEqual: @"popularMovies"] ) {
+        [self.myMoviesModel setCategory:kJLTMDbMoviePopular];
+    } else if( [name isEqual: @"upcomingMovies"] ) {
+        [self.myMoviesModel setCategory:kJLTMDbMovieUpcoming];
+    } else if( [name isEqual: @"topRatedMovies"] ) {
+        [self.myMoviesModel setCategory:kJLTMDbMovieTopRated];
+    } else if( [name isEqual: @"numOfMoviesPicker"] ) {
+//        if([self.numMoviesPicker.description  isEqualToString: @"10"]) {
+//            controller.numMovies = 10;
+//        } else if([self.numMoviesPicker.description isEqualToString:@"15"]) {
+//            controller.numMovies = 15;
+//        } else if([self.numMoviesPicker.description isEqualToString:@"20"]) {
+//            controller.numMovies = 20;
+//        }
     }
     
+    //Change from table to collection view
     UISwitch *mySwitch = (UISwitch *)sender;
     
     if([mySwitch isOn]) {
         
         NSLog(@"wtf");
-//        CollectionViewController *collectionViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"collectionViewController"];
-         [self.navigationController pushViewController:collectionViewController animated:YES];
+//        MovieCollectionViewController *MovieCollectionViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MovieCollectionViewController"];
+         [self.navigationController pushViewController:movieCollectionViewController animated:YES];
     }
     
     

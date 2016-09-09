@@ -1,31 +1,42 @@
 #import <UIImageView+AFNetworking.h>
 #import <JLTMDbClient.h>
 #import "MoviesTableViewController.h"
+#import "MoviesModel.h"
 #import "MovieDetailsViewController.h"
 
 
 @interface MoviesTableViewController ()
 
+@property (strong,nonatomic) MoviesModel* myMoviesModel;
 
 @end
 
 @implementation MoviesTableViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [self loadConfiguration];
+-(MoviesModel*)myMoviesModel{
     
-    NSLog(@"hi");
+    if(!_myMoviesModel)
+        _myMoviesModel =[MoviesModel sharedInstance];
+    
+    return _myMoviesModel;
+}
+
+- (void)viewDidLoad {
+    NSLog(@"MoviesTableViewController.viewDidLoad");
+    
+    [super viewDidLoad];
 
     self.tableView.rowHeight = 60.0f;
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval: 10.0 target:self selector:@selector(refresh) userInfo:nil repeats:YES];
     
-    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
-    [self refresh];
+    //Randomly get new movies every 10 seconds
+//    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval: 10.0 target:self selector:@selector(refresh) userInfo:nil repeats:YES];
+//    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
     
-    //sidebar menu
+    //Refresh when pulling down from top
+//    self.refreshControl = [[UIRefreshControl alloc] init];
+//    [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+    
+    //Sidebar menu
     SWRevealViewController *revealViewController = self.revealViewController;
     //revealViewController.delegate = self;
     if ( revealViewController )
@@ -35,7 +46,15 @@
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
     
+    //Default # of movies at 10
     self.numMovies = 10;
+    
+    //Set view title
+    self.mainNavItem.title = [self.myMoviesModel getMovieCategoryTitle];
+    
+    //Fetch movies
+    [self.tableView reloadData];
+    [self.refreshControl endRefreshing];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -56,19 +75,25 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.numMovies;
+    return [self.myMoviesModel getTotalNumOfMovies];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"MovieCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (!cell)
+    if (!cell){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
     
-    NSDictionary *movieDict = self.moviesArray[indexPath.row];
+    //Get movie by indexPath.row
+    NSDictionary *movieDict = [self.myMoviesModel getMovieByIndex:indexPath.row];
+    
+    //Setup table cell text
     cell.textLabel.text = movieDict[@"original_title"];
     cell.textLabel.textColor = [UIColor darkGrayColor];
+    
+    //Setup table cell imageView
     cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
     if (movieDict[@"poster_path"] != [NSNull null]) {
         NSString *imageUrl = [self.imagesBaseUrlString stringByAppendingString:movieDict[@"poster_path"]];
@@ -84,52 +109,13 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     MovieDetailsViewController *movieDetailViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MovieDetailsViewController"];
-    movieDetailViewController.movieId = self.moviesArray[indexPath.row][@"id"];
-    movieDetailViewController.movieTitle = self.moviesArray[indexPath.row][@"title"];
+    
+    NSDictionary *movieDict = [self.myMoviesModel getMovieByIndex:indexPath.row];
+    
+    movieDetailViewController.movieId = movieDict[@"id"];
+    movieDetailViewController.movieTitle = movieDict[@"title"];
     movieDetailViewController.imagesBaseUrlString = self.imagesBaseUrlString;
     [self.navigationController pushViewController:movieDetailViewController animated:YES];
-}
-
-#pragma mark - Private Methods
-
-- (void) loadConfiguration {
-//    __block UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please try again later", @"") delegate:self cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Ok", @""), nil];
-    
-    [[JLTMDbClient sharedAPIInstance] GET:kJLTMDbConfiguration withParameters:nil andResponseBlock:^(id response, NSError *error) {
-        if (!error)
-            self.imagesBaseUrlString = [response[@"images"][@"base_url"] stringByAppendingString:@"w92"];
-        else
-            NSLog(@"error");
-//            [errorAlertView show];
-    }];
-}
-
-
-- (void) refresh {
-    NSArray *optionsArray = @[kJLTMDbMoviePopular, kJLTMDbMovieUpcoming, kJLTMDbMovieTopRated];
-//    __block UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please try again later", @"") delegate:self cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Ok", @""), nil];
-    
-    
-    NSString* option = optionsArray[self.categoryCounter];
-    
-
-    if(self.categoryCounter == 0){
-        self.mainNavItem.title = @"Popular Movies";
-    }else if(self.categoryCounter == 1){
-        self.mainNavItem.title = @"Upcoming Movies";
-    }else if(self.categoryCounter == 2){
-        self.mainNavItem.title = @"Top Rated Movies";
-    }
-    
-    [[JLTMDbClient sharedAPIInstance] GET:option withParameters:nil andResponseBlock:^(id response, NSError *error) {
-        if (!error) {
-            self.moviesArray = response[@"results"];
-            [self.tableView reloadData];
-        }else
-            NSLog(@"error");
-//            [errorAlertView show];
-        [self.refreshControl endRefreshing];
-    }];
 }
 
 @end

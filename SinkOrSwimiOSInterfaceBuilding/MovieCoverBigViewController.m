@@ -1,8 +1,5 @@
 #import <UIImageView+AFNetworking.h>
-#import <JLTMDbClient.h>
 #import "MovieCoverBigViewController.h"
-#import "ImageModel.h"
-#import "MovieDetailsViewController.h"
 
 
 @interface MovieCoverBigViewController () <UIScrollViewDelegate>

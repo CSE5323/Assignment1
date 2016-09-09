@@ -14,7 +14,7 @@
 
 @interface ViewController () <UIScrollViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong,nonatomic) ImageModel* myImageModel;
 
 @end
@@ -28,7 +28,7 @@
     if(!_imageView)
     {
         _imageView =[[UIImageView alloc] initWithImage:self.image];
-        _imageView.frame = CGRectMake(0,0,600,600);
+        _imageView.frame = self.scrollView.bounds;
     }
     
     return _imageView;
@@ -40,10 +40,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    self.scrollView = [[UIScrollView alloc] initWithFrame:(CGRect){{0,0}, {600,600}}];
+    
     [self.scrollView addSubview:self.imageView];
     self.scrollView.contentSize = self.imageView.image.size;
     self.scrollView.minimumZoomScale = 0.1;
     self.scrollView.delegate = self;
+    
+    [self.view addSubview:self.scrollView];
     
 }
 

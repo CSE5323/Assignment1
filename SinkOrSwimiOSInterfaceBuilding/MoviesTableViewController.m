@@ -29,6 +29,14 @@
     }
 }
 
+- (void)randomlyChangeBackgroundColor{
+    CGFloat hue = ( arc4random() % 256 / 256.0 );  //  0.0 to 1.0
+    CGFloat saturation = ( arc4random() % 128 / 256.0 ) + 0.5;  //  0.5 to 1.0, away from white
+    CGFloat brightness = ( arc4random() % 128 / 256.0 ) + 0.5;  //  0.5 to 1.0, away from black
+    UIColor *color = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1];
+    
+    self.tableView.backgroundColor = color;
+}
 - (void)viewDidLoad {
     NSLog(@"MoviesTableViewController.viewDidLoad");
     
@@ -36,9 +44,9 @@
 
     self.tableView.rowHeight = 60.0f;
     
-    //Randomly get new movies every 10 seconds
-//    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval: 10.0 target:self selector:@selector(refresh) userInfo:nil repeats:YES];
-//    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+    //Randomly change background color
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval: 1 target:self selector:@selector(randomlyChangeBackgroundColor) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
     
     //Refresh when pulling down from top
 //    self.refreshControl = [[UIRefreshControl alloc] init];

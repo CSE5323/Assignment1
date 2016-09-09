@@ -33,7 +33,6 @@
     // Do any additional setup after loading the view.
     self.navigationItem.title = self.movieTitle;
     __block NSString *imageBackdrop;
-//    __block UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please try again later", @"") delegate:self cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Ok", @""), nil];
     [[JLTMDbClient sharedAPIInstance] GET:kJLTMDbMovie withParameters:@{@"id":self.movieId} andResponseBlock:^(id response, NSError *error) {
         if (!error) {
             self.movieDict = response;
@@ -55,10 +54,11 @@
     [self.movieCoverImageView setUserInteractionEnabled:YES];
     [self.movieCoverImageView addGestureRecognizer:singleTap];
     
-    
-    
     //setting up reviews table
     self.reviewsTable.rowHeight = 40.0f;
+    
+    //Set avg review
+    self.avgReviewLabel.text = @"Avg Review - 5";
 }
 
 
@@ -77,6 +77,9 @@
     self.movieDescriptionTextView.text = self.movieDict[@"overview"];
     self.movieDescriptionTextView.font = [UIFont systemFontOfSize:14];
     self.movieDescriptionTextView.textColor = [UIColor lightGrayColor];
+    
+    [self.movieDescriptionTextView sizeToFit]; //added
+    [self.movieDescriptionTextView layoutIfNeeded]; //added
     
 }
 

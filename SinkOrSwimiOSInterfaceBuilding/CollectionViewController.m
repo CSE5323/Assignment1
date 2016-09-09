@@ -95,13 +95,10 @@ static NSString * const reuseIdentifier = @"ImageCollectCell";
     
     MoviesTableViewController *moviesController = [[MoviesTableViewController alloc] init];
     
-    static NSString *CellIdentifier = @"MovieCoverCell";
+//    static NSString *CellIdentifier = @"MovieCoverCell";
     
     
     CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    
-    if (!cell)
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     
     // Configure the cell
     NSDictionary *movieDict = self.moviesArray[indexPath.row];

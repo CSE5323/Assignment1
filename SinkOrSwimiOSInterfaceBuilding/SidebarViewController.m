@@ -164,7 +164,6 @@
     
     if([mySwitch isOn])
     {
-        NSLog(@"hello");
         [self.navigationController pushViewController:collection_controller animated:YES];
         
 //        [self.navigationController performSegueWithIdentifier:@"second_segue" sender:self];

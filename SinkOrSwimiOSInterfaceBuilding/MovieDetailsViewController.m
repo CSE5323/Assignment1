@@ -3,6 +3,8 @@
 #import "MovieDetailsViewController.h"
 #import "MovieReviewViewController.h"
 #import "MovieReview.h"
+#import "MoviesModel.h"
+#import "MovieCoverBigViewController.h"
 
 @interface MovieDetailsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *reviewsTable;
@@ -31,19 +33,21 @@
     // Do any additional setup after loading the view.
     self.navigationItem.title = self.movieTitle;
     __block NSString *imageBackdrop;
-    __block UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please try again later", @"") delegate:self cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Ok", @""), nil];
+//    __block UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please try again later", @"") delegate:self cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Ok", @""), nil];
     [[JLTMDbClient sharedAPIInstance] GET:kJLTMDbMovie withParameters:@{@"id":self.movieId} andResponseBlock:^(id response, NSError *error) {
         if (!error) {
             self.movieDict = response;
             if (self.movieDict[@"backdrop_path"] != [NSNull null]){
-                imageBackdrop = [self.imagesBaseUrlString stringByReplacingOccurrencesOfString:@"w92" withString:@"w780"];
+                imageBackdrop = [[MoviesModel sharedInstance].imagesBaseUrlString stringByReplacingOccurrencesOfString:@"w92" withString:@"w780"];
                 [self.movieCoverImageView setImageWithURL:[NSURL URLWithString:[imageBackdrop stringByAppendingString:self.movieDict[@"backdrop_path"]]]];
             } else {
-                imageBackdrop = [self.imagesBaseUrlString stringByReplacingOccurrencesOfString:@"w92" withString:@"w500"];
+                imageBackdrop = [[MoviesModel sharedInstance].imagesBaseUrlString stringByReplacingOccurrencesOfString:@"w92" withString:@"w500"];
                 [self.movieCoverImageView setImageWithURL:[NSURL URLWithString:[imageBackdrop stringByAppendingString:self.movieDict[@"poster_path"]]]];
             }
-        }else
-            [errorAlertView show];
+        }else{
+            NSLog([NSString stringWithFormat:@"%@%@", @"Cannot get movie with ID#",
+                   self.movieId]);
+        }
     }];
     
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected)];
@@ -60,7 +64,7 @@
 
 -(void)tapDetected{
     NSLog(@"single Tap on imageview");
-    [self performSegueWithIdentifier:@"MySegue" sender:self];
+    [self performSegueWithIdentifier:@"MovieBigCoverSeque" sender:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -78,6 +82,22 @@
 
 - (NSInteger)tableView:(UITableView *)reviesTable numberOfRowsInSection:(NSInteger)section {
     return self.movieReviews.count;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    BOOL isBigCoverView = [[segue destinationViewController] isKindOfClass:[MovieCoverBigViewController class]];
+    
+
+    if(isBigCoverView){
+        UIImage* movie_cover_big_image;
+        
+        MovieCoverBigViewController *vc = [segue destinationViewController];
+        
+        movie_cover_big_image = [UIImage imageWithData:UIImagePNGRepresentation(self.movieCoverImageView.image)];
+        
+        vc.image = movie_cover_big_image;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)reviewsTable cellForRowAtIndexPath:(NSIndexPath *)indexPath {

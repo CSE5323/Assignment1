@@ -3,6 +3,7 @@
 #import "CollectionViewController.h"
 #import "ImageModel.h"
 #import "CollectionViewCell.h"
+#import "MoviesTableViewController.h"
 
 @interface CollectionViewController ()
 
@@ -13,20 +14,32 @@
 
 @implementation CollectionViewController
 
--(ImageModel*)myImageModel{
-    
-    if(!_myImageModel)
-        _myImageModel =[ImageModel sharedInstance];
-    
-    return _myImageModel;
-}
+//-(ImageModel*)myImageModel{
+//    
+//    if(!_myImageModel)
+//        _myImageModel =[ImageModel sharedInstance];
+//    
+//    return _myImageModel;
+//}
 
 static NSString * const reuseIdentifier = @"ImageCollectCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self loadConfiguration];
     
-//    [self loadConfiguration];
+    //sidebar menu
+    SWRevealViewController *revealViewController = self.revealViewController;
+    //revealViewController.delegate = self;
+    if ( revealViewController )
+    {
+        [self.sidebarButton2 setTarget: self.revealViewController];
+        [self.sidebarButton2 setAction: @selector( revealToggle: )];
+        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    }
+    
+    
+    
     
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -38,6 +51,16 @@ static NSString * const reuseIdentifier = @"ImageCollectCell";
     //[self.collectionView registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
     // Do any additional setup after loading the view.
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    self.collectionView.dataSource = self;
+    self.collectionView.delegate = self;
+    
+    [self.collectionView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,31 +86,48 @@ static NSString * const reuseIdentifier = @"ImageCollectCell";
     return 1;
 }
 
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [self.myImageModel getTotalNumOfImages];
-}
+//
+//- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+//    return [self.myImageModel getTotalNumOfImages];
+//}
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    MoviesTableViewController *moviesController = [[MoviesTableViewController alloc] init];
+    
+//    static NSString *CellIdentifier = @"MovieCoverCell";
+    
+    
     CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
     // Configure the cell
+    NSDictionary *movieDict = self.moviesArray[indexPath.row];
+
     cell.backgroundColor = [UIColor blueColor];
-    cell.imageView.image = [self.myImageModel getImageWithName:[self.myImageModel getImageNameByIndex:indexPath.row]];
+//    cell.imageView.image = [self.myImageModel getImageWithName:[self.myImageModel getImageNameByIndex:indexPath.row]];
+    
+    if (movieDict[@"poster_path"] != [NSNull null]) {
+        NSString *imageUrl = [self.imagesBaseUrlString stringByAppendingString:movieDict[@"poster_path"]];
+        [cell.imageView setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"TMDB"]];
+    }
+    
     
     return cell;
 }
 
 - (void) loadConfiguration {
-    __block UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please try again later", @"") delegate:self cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Ok", @""), nil];
+//    __block UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please try again later", @"") delegate:self cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Ok", @""), nil];
     
     [[JLTMDbClient sharedAPIInstance] GET:kJLTMDbConfiguration withParameters:nil andResponseBlock:^(id response, NSError *error) {
         if (!error)
             self.imagesBaseUrlString = [response[@"images"][@"base_url"] stringByAppendingString:@"w92"];
         else
-            [errorAlertView show];
+            NSLog(@"error");
+//            [errorAlertView show];
     }];
 }
+
+
 
 #pragma mark <UICollectionViewDelegate>
 

@@ -33,8 +33,8 @@ static NSString * const reuseIdentifier = @"ImageCollectCell";
     //revealViewController.delegate = self;
     if ( revealViewController )
     {
-        [self.sidebarButton setTarget: self.revealViewController];
-        [self.sidebarButton setAction: @selector( revealToggle: )];
+        [self.sidebarButton2 setTarget: self.revealViewController];
+        [self.sidebarButton2 setAction: @selector( revealToggle: )];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
     
@@ -55,12 +55,12 @@ static NSString * const reuseIdentifier = @"ImageCollectCell";
 
 -(void)viewWillAppear:(BOOL)animated
 {
-//    [super viewWillAppear:animated];
-//    
-//    self.tableView.dataSource = self;
-//    self.tableView.delegate = self;
-//    
-//    [self.tableView reloadData];
+    [super viewWillAppear:animated];
+
+    self.collectionView.dataSource = self;
+    self.collectionView.delegate = self;
+    
+    [self.collectionView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {

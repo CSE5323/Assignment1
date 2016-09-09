@@ -87,11 +87,12 @@
     BOOL isVC = [[segue destinationViewController] isKindOfClass:[ViewController class]];
     UIImage* my_image;
     
-    if(isVC){
-//        UITableViewCell* cell = (UITableViewCell*)sender;
-        ViewController *vc = [segue destinationViewController];
-        my_image = [UIImage imageWithData:UIImagePNGRepresentation(self.movieCoverImageView.image)];
+    if(isVC) {
         
+        ViewController *vc = [segue destinationViewController];
+//        my_image = [UIImage imageWithData:UIImagePNGRepresentation(self.movieCoverImageView.image)];
+        
+        my_image = self.movieCoverImageView.image;
         vc.image = my_image;
 //        [vc.imageView setImage:my_image];
     }

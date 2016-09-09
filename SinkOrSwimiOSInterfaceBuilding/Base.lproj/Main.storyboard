@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Collection View Controller-->
+        <!--Cover View-->
         <scene sceneID="7aF-Zp-s9b">
             <objects>
                 <collectionViewController storyboardIdentifier="collectionViewController" id="Rua-Bx-jeh" customClass="CollectionViewController" sceneMemberID="viewController">
@@ -23,7 +23,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCollectCell" id="WcD-at-RBI" customClass="CollectionViewCell">
-                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                <rect key="frame" x="0.0" y="64" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -54,7 +54,9 @@
                             <outlet property="delegate" destination="Rua-Bx-jeh" id="Cdp-xh-uCV"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="Dli-Lo-4A1"/>
+                    <navigationItem key="navigationItem" title="Cover View" id="Dli-Lo-4A1">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="Txg-mX-olz"/>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ggn-2Z-0pG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -70,6 +72,7 @@
                     <connections>
                         <outlet property="mainNavItem" destination="uNd-rX-80u" id="UV1-tg-TC6"/>
                         <outlet property="sidebarButton" destination="2AJ-Bw-4a7" id="92k-24-1u1"/>
+                        <segue destination="Rua-Bx-jeh" kind="show" identifier="second_sqgue" id="c6V-GT-xpF"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R1C-3q-3mr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -86,13 +89,29 @@
                         <animations/>
                     </navigationBar>
                     <connections>
-                        <segue destination="VbI-O7-5xz" kind="relationship" relationship="rootViewController" id="YK5-Xc-5XZ"/>
-                        <segue destination="Rua-Bx-jeh" kind="custom" identifier="second_segue" customClass="SWRevealViewControllerSeguePushController" id="8gT-ls-wsr"/>
+                        <segue destination="VbI-O7-5xz" kind="relationship" relationship="rootViewController" id="w1v-FG-03Q"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rQb-lB-d7A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-386" y="889"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7Bn-WH-MGU">
+            <objects>
+                <navigationController id="tCt-A3-cXk" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fsh-im-f4j">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Rua-Bx-jeh" kind="relationship" relationship="rootViewController" id="Rnk-AF-vjU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jHs-MX-buh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1034" y="1263"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="1zx-2Y-36t">
@@ -458,7 +477,7 @@
                                                     <rect key="frame" x="156" y="8" width="51" height="28"/>
                                                     <animations/>
                                                     <connections>
-                                                        <segue destination="Id9-HV-5CI" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="MaA-bt-dQF"/>
+                                                        <segue destination="tCt-A3-cXk" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="drM-fT-2hp"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
@@ -796,6 +815,7 @@
         <image name="menu" width="28" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="c6V-GT-xpF"/>
         <segue reference="sun-N9-1nO"/>
     </inferredMetricsTieBreakers>
 </document>

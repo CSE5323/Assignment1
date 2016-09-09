@@ -136,10 +136,11 @@
     NSString *name = [self.menuItems objectAtIndex:indexPath.row];
     
     UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
-    MoviesTableViewController *controller = (MoviesTableViewController *)navController.topViewController;
     
-    CollectionViewController *collectionViewController =
-    (CollectionViewController *)navController.topViewController;
+    UINavigationController *navController2 = (UINavigationController *)segue.destinationViewController;
+    
+    CollectionViewController *collection_controller = (CollectionViewController *)navController2.topViewController;
+    MoviesTableViewController *controller = (MoviesTableViewController *)navController.topViewController;
     
     
     if( [name  isEqual: @"popularMovies"] ) {
@@ -157,13 +158,16 @@
             controller.numMovies = 20;
         }
     }
+
     
     UISwitch *mySwitch = (UISwitch *)sender;
     
     if([mySwitch isOn])
     {
         NSLog(@"hello");
-        [self.navigationController performSegueWithIdentifier:@"second_segue" sender:self.navigationController];
+        [self.navigationController pushViewController:collection_controller animated:YES];
+        
+//        [self.navigationController performSegueWithIdentifier:@"second_segue" sender:self];
     }
     
     

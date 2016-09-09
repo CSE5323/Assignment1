@@ -56,7 +56,7 @@
     return 1;
 }
 
-
+//
 //- (IBAction)switched:(UISwitch *)sender {
 //
 //    UISwitch *mySwitch = (UISwitch *)sender;
@@ -160,11 +160,10 @@
     
     UISwitch *mySwitch = (UISwitch *)sender;
     
-    if([mySwitch isOn]) {
-        
-        NSLog(@"wtf");
-//        CollectionViewController *collectionViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"collectionViewController"];
-         [self.navigationController pushViewController:collectionViewController animated:YES];
+    if([mySwitch isOn])
+    {
+        NSLog(@"hello");
+        [self.navigationController performSegueWithIdentifier:@"second_segue" sender:self.navigationController];
     }
     
     

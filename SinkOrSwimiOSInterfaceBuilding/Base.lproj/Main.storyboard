@@ -58,7 +58,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ggn-2Z-0pG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="488" y="1669"/>
+            <point key="canvasLocation" x="292" y="1669"/>
         </scene>
         <!--Movies-->
         <scene sceneID="0Gp-qL-SWs">
@@ -74,7 +74,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R1C-3q-3mr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="488" y="889"/>
+            <point key="canvasLocation" x="292" y="889"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iuy-gq-JIz">
@@ -87,6 +87,7 @@
                     </navigationBar>
                     <connections>
                         <segue destination="VbI-O7-5xz" kind="relationship" relationship="rootViewController" id="YK5-Xc-5XZ"/>
+                        <segue destination="Rua-Bx-jeh" kind="custom" identifier="second_segue" customClass="SWRevealViewControllerSeguePushController" id="8gT-ls-wsr"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rQb-lB-d7A" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -457,7 +458,7 @@
                                                     <rect key="frame" x="156" y="8" width="51" height="28"/>
                                                     <animations/>
                                                     <connections>
-                                                        <segue destination="Id9-HV-5CI" kind="custom" identifier="PleaseWork" customClass="SWRevealViewControllerSeguePushController" id="sUJ-H8-YS1"/>
+                                                        <segue destination="Id9-HV-5CI" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="MaA-bt-dQF"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
@@ -499,7 +500,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FXe-cD-zS5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="488" y="82"/>
+            <point key="canvasLocation" x="292" y="82"/>
         </scene>
         <!--Detail-->
         <scene sceneID="tfa-YB-gEj">
@@ -676,7 +677,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fiY-L0-WKB" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1152" y="889"/>
+            <point key="canvasLocation" x="964" y="889"/>
         </scene>
         <!--Movie Review-->
         <scene sceneID="WCi-Cy-47x">
@@ -788,13 +789,13 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1152" y="82"/>
+            <point key="canvasLocation" x="964" y="82"/>
         </scene>
     </scenes>
     <resources>
         <image name="menu" width="28" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sUJ-H8-YS1"/>
+        <segue reference="sun-N9-1nO"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -13,13 +13,13 @@
 
 @implementation CollectionViewController
 
--(ImageModel*)myImageModel{
-    
-    if(!_myImageModel)
-        _myImageModel =[ImageModel sharedInstance];
-    
-    return _myImageModel;
-}
+//-(ImageModel*)myImageModel{
+//    
+//    if(!_myImageModel)
+//        _myImageModel =[ImageModel sharedInstance];
+//    
+//    return _myImageModel;
+//}
 
 static NSString * const reuseIdentifier = @"ImageCollectCell";
 
@@ -64,10 +64,10 @@ static NSString * const reuseIdentifier = @"ImageCollectCell";
     return 1;
 }
 
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [self.myImageModel getTotalNumOfImages];
-}
+//
+//- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+//    return [self.myImageModel getTotalNumOfImages];
+//}
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
@@ -90,6 +90,8 @@ static NSString * const reuseIdentifier = @"ImageCollectCell";
 //            [errorAlertView show];
     }];
 }
+
+
 
 #pragma mark <UICollectionViewDelegate>
 

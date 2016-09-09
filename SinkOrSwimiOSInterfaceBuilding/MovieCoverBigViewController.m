@@ -3,7 +3,6 @@
 
 
 @interface MovieCoverBigViewController () <UIScrollViewDelegate>
-
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
@@ -26,6 +25,8 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
+    self.scrollView = [[UIScrollView alloc] initWithFrame:(CGRect){{0,0}, {600,600}}];
     
     self.scrollView = [[UIScrollView alloc] initWithFrame:(CGRect){{0,0}, {600,600}}];
     

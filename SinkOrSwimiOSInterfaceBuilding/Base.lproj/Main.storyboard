@@ -96,7 +96,6 @@
             <point key="canvasLocation" x="-386" y="889"/>
         </scene>
         <!--Movie Cover Large-->
-
         <scene sceneID="1zx-2Y-36t">
             <objects>
                 <viewController storyboardIdentifier="MovieCoverBigViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dXg-uG-y15" customClass="MovieCoverBigViewController" sceneMemberID="viewController">

@@ -88,6 +88,7 @@
     
     BOOL isBigCoverView = [[segue destinationViewController] isKindOfClass:[MovieCoverBigViewController class]];
     
+
     if(isBigCoverView){
         UIImage* movie_cover_big_image;
         

@@ -3,6 +3,7 @@
 #import "MovieDetailsViewController.h"
 #import "MovieReviewViewController.h"
 #import "MovieReview.h"
+#import "MoviesModel.h"
 #import "MovieCoverBigViewController.h"
 
 @interface MovieDetailsViewController ()
@@ -37,10 +38,10 @@
         if (!error) {
             self.movieDict = response;
             if (self.movieDict[@"backdrop_path"] != [NSNull null]){
-                imageBackdrop = [self.imagesBaseUrlString stringByReplacingOccurrencesOfString:@"w92" withString:@"w780"];
+                imageBackdrop = [[MoviesModel sharedInstance].imagesBaseUrlString stringByReplacingOccurrencesOfString:@"w92" withString:@"w780"];
                 [self.movieCoverImageView setImageWithURL:[NSURL URLWithString:[imageBackdrop stringByAppendingString:self.movieDict[@"backdrop_path"]]]];
             } else {
-                imageBackdrop = [self.imagesBaseUrlString stringByReplacingOccurrencesOfString:@"w92" withString:@"w500"];
+                imageBackdrop = [[MoviesModel sharedInstance].imagesBaseUrlString stringByReplacingOccurrencesOfString:@"w92" withString:@"w500"];
                 [self.movieCoverImageView setImageWithURL:[NSURL URLWithString:[imageBackdrop stringByAppendingString:self.movieDict[@"poster_path"]]]];
             }
         }else{

@@ -21,6 +21,14 @@
     return _myMoviesModel;
 }
 
+-(void)checkRes:(NSNotification *)notification
+{
+    if ([[notification name] isEqualToString:@"updatedMovies"])
+    {
+        [self.tableView reloadData];
+    }
+}
+
 - (void)viewDidLoad {
     NSLog(@"MoviesTableViewController.viewDidLoad");
     
@@ -47,15 +55,17 @@
     }
     
     //Default # of movies at 10
-    self.numMovies = 10;
+    self.myMoviesModel.maxNumberOfMovies = 10;
     
     //Set view title
     self.mainNavItem.title = [self.myMoviesModel getMovieCategoryTitle];
     
-    //Fetch movies
-    [self.tableView reloadData];
-    [self.refreshControl endRefreshing];
+    //Receive notifications when it needs to update the table when the movies have been loaded
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updatedMovies" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkRes:) name:@"updatedMovies" object:nil];
 }
+
+
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -92,11 +102,12 @@
     //Setup table cell text
     cell.textLabel.text = movieDict[@"original_title"];
     cell.textLabel.textColor = [UIColor darkGrayColor];
+    cell.textLabel.font = [cell.textLabel.font fontWithSize:self.myMoviesModel.fontSize];
     
     //Setup table cell imageView
     cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
     if (movieDict[@"poster_path"] != [NSNull null]) {
-        NSString *imageUrl = [self.imagesBaseUrlString stringByAppendingString:movieDict[@"poster_path"]];
+        NSString *imageUrl = [self.myMoviesModel.imagesBaseUrlString stringByAppendingString:movieDict[@"poster_path"]];
         [cell.imageView setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"TMDB"]];
     }
     return cell;
@@ -114,7 +125,6 @@
     
     movieDetailViewController.movieId = movieDict[@"id"];
     movieDetailViewController.movieTitle = movieDict[@"title"];
-    movieDetailViewController.imagesBaseUrlString = self.imagesBaseUrlString;
     [self.navigationController pushViewController:movieDetailViewController animated:YES];
 }
 

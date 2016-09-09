@@ -10,8 +10,4 @@
 
 @interface SidebarViewController : UITableViewController<UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIPickerView *numMoviesPicker;
-
-
-
 @end

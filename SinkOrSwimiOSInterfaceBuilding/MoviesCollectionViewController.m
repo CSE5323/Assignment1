@@ -1,17 +1,17 @@
 #import <UIImageView+AFNetworking.h>
 #import <JLTMDbClient.h>
-#import "MovieCollectionViewController.h"
+#import "MoviesCollectionViewController.h"
 #import "MoviesModel.h"
 #import "CollectionViewCell.h"
 
-@interface MovieCollectionViewController ()
+@interface MoviesCollectionViewController ()
 
 
 @property (strong,nonatomic) MoviesModel* myMoviesModel;
 
 @end
 
-@implementation MovieCollectionViewController
+@implementation MoviesCollectionViewController
 
 -(MoviesModel*)myMoviesModel{
     
@@ -61,7 +61,7 @@ static NSString * const reuseIdentifier = @"MovieBannerCell";
     
     cell.backgroundColor = [UIColor blueColor];
     
-    NSString *imageUrl = [self.imagesBaseUrlString stringByAppendingString:movieDict[@"poster_path"]];
+    NSString *imageUrl = [self.myMoviesModel.imagesBaseUrlString stringByAppendingString:movieDict[@"poster_path"]];
     [cell.imageView setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"TMDB"]];
     
     return cell;

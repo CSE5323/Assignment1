@@ -6,7 +6,6 @@
 @property (strong, nonatomic) NSString *movieTitle;
 @property (strong, nonatomic) NSDictionary *movieDict;
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicatorView;
-@property (copy, nonatomic) NSString *imagesBaseUrlString;
 @property (strong,nonatomic) NSMutableArray* movieReviews;
 
 @property (weak, nonatomic) IBOutlet UIImageView *movieCoverImageView;

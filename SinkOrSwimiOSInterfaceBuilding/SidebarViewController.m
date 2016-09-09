@@ -8,17 +8,21 @@
 
 #import "SidebarViewController.h"
 #import "MoviesTableViewController.h"
-#import "MovieCollectionViewController.h"
+#import "MoviesCollectionViewController.h"
 #import "MoviesModel.h"
 #import <JLTMDbClient.h>
 
 
 @interface SidebarViewController ()
 
-@property (strong, nonatomic) IBOutlet UISwitch *switcher;
+
+@property (weak, nonatomic) IBOutlet UISwitch *collectionSwitcher;
 @property (nonatomic, strong) NSArray *menuItems;
-@property (nonatomic, strong) NSArray *data;
+@property (nonatomic, strong) NSArray *pickerData;
 @property (strong,nonatomic) MoviesModel* myMoviesModel;
+@property (weak, nonatomic) IBOutlet UIPickerView *numMoviesPicker;
+@property (weak, nonatomic) IBOutlet UIStepper *movieTextFontSizeStepper;
+@property (weak, nonatomic) IBOutlet UILabel *fontSizeLabel;
 
 @end
 
@@ -33,17 +37,17 @@
 }
 
 -(NSArray*) menuItems {
-    if(!_menuItems) {   //using lazy instantiation to set an array with the cell identifiers
-        _menuItems = @[@"title", @"popularMovies", @"upcomingMovies", @"topRatedMovies", @"appSettings", @"numOfMovies", @"numOfMoviesPicker", @"numOfReviews", @"numOfReviewsStepper", @"viewType"];
+    if(!_menuItems) {
+        _menuItems = @[@"title", @"popularMovies", @"upcomingMovies", @"topRatedMovies", @"appSettings", @"viewType", @"movieTextFontSize", @"movieTextFontSizeStepper", @"numOfMovies"];
     }
     return _menuItems;
 }
 
--(NSArray*) data {
-    if(!_data) {   //using lazy instantiation to set an array with the cell identifiers
-        _data = @[@"10", @"15",@"20"];
+-(NSArray*) pickerData {
+    if(!_pickerData) {
+        _pickerData = @[@"10", @"15",@"20"];
     }
-    return _data;
+    return _pickerData;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -62,77 +66,53 @@
     self.numMoviesPicker.delegate = self;
     self.numMoviesPicker.dataSource = self;
 }
-
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView {
+- (IBAction)movieTextFontSizeStepperChanged:(id)sender {
+    NSLog(@"SidebarViewController.movieTextFontSizeStepperChanged");
+    self.myMoviesModel.fontSize = (int)self.movieTextFontSizeStepper.value;
+    self.fontSizeLabel.text = [NSString stringWithFormat:@"%d", (int)self.movieTextFontSizeStepper.value];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"updatedMovies" object:self];
+}
+- (IBAction)collectionSwitcherChanged:(id)sender {
+    NSLog(@"SidebarViewController.collectionSwitcherChanged");
+    if([self.collectionSwitcher isOn]) {
+        MoviesCollectionViewController *moviesCollectionViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MoviesCollectionViewController"];
+        [self.navigationController pushViewController:moviesCollectionViewController animated:YES];
+    }else{
+        MoviesTableViewController *moviesTableViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MoviesTableViewController"];
+        [self.navigationController pushViewController:moviesTableViewController animated:YES];
+    }
     
+}
+
+//Picker delegate functions
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
     return 1;
 }
 
-
-//- (IBAction)switched:(UISwitch *)sender {
-//
-//    UISwitch *mySwitch = (UISwitch *)sender;
-//    
-//    MoviesTableViewController *movieTableViewController = [[MoviesTableViewController alloc] initWithNibName:nil bundle:nil];
-//    
-//    MovieCollectionViewController *movieCollectionViewController = [[MovieCollectionViewController alloc] initWithNibName:nil bundle:nil];
-//    
-//    if([mySwitch isOn]) {
-//
-//        [self.navigationController pushViewController:movieCollectionViewController animated:YES];
-//    }
-//    else {
-//        
-////        [self.navigationController pushViewController:movieTableViewController animated:YES];
-//    }
-//}
-
-
-#pragma mark - Table view data source
-
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//    return 1;
-//}
-
-- (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component {
-    
-    return 3;
-}
-
-- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    UILabel* pickerLabel = (UILabel*)view;
-    
-    if (!pickerLabel)
-    {
-        pickerLabel = [[UILabel alloc] init];
-        
-        pickerLabel.font = [UIFont fontWithName:@"SourceSansPro-Semibold"                size:14];
-        
-        pickerLabel.textAlignment=NSTextAlignmentCenter;
-    }
-    [pickerLabel setText:[self.data objectAtIndex:row]];
-    
-    return pickerLabel;
+    return [self.pickerData count];
 }
 
-//- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-//    NSString * title = nil;
-//    
-//    switch(row) {
-//        case 0:
-//            title = @"10";
-//            break;
-//        case 1:
-//            title = @"20";
-//            break;
-//        case 2:
-//            title = @"30";
-//            break;
-//    }
-//    return title;
-//}
+- (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    
+    return self.pickerData[row];
+}
+
+- (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    NSLog(@"clicked picker");
+    
+    self.myMoviesModel.maxNumberOfMovies = [[self.pickerData objectAtIndex:row] integerValue];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"updatedMovies" object:self];
+}
+
+//Table view delegate functions
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -147,9 +127,8 @@
     
     NSString *name = [self.menuItems objectAtIndex:indexPath.row];
     
-    UINavigationController *navController = [segue destinationViewController];
-    MovieCollectionViewController *movieCollectionViewController = (MovieCollectionViewController *)navController.topViewController;
-    
+//    UINavigationController *navController = (UINavigationController*)[segue destinationViewController];
+//    MoviesCollectionViewController *eventsController = (MoviesCollectionViewController*)[navController topViewController];
     
     if( [name isEqual: @"popularMovies"] ) {
         [self.myMoviesModel setCategory:kJLTMDbMoviePopular];
@@ -157,28 +136,9 @@
         [self.myMoviesModel setCategory:kJLTMDbMovieUpcoming];
     } else if( [name isEqual: @"topRatedMovies"] ) {
         [self.myMoviesModel setCategory:kJLTMDbMovieTopRated];
-    } else if( [name isEqual: @"numOfMoviesPicker"] ) {
-//        if([self.numMoviesPicker.description  isEqualToString: @"10"]) {
-//            controller.numMovies = 10;
-//        } else if([self.numMoviesPicker.description isEqualToString:@"15"]) {
-//            controller.numMovies = 15;
-//        } else if([self.numMoviesPicker.description isEqualToString:@"20"]) {
-//            controller.numMovies = 20;
-//        }
+    } else if( [name isEqual: @"viewType"] ) {
+//        [self.myMoviesModel setCategory:kJLTMDbMovieTopRated];
     }
-    
-    //Change from table to collection view
-    UISwitch *mySwitch = (UISwitch *)sender;
-    
-    if([mySwitch isOn]) {
-        
-        NSLog(@"wtf");
-//        MovieCollectionViewController *MovieCollectionViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MovieCollectionViewController"];
-         [self.navigationController pushViewController:movieCollectionViewController animated:YES];
-    }
-    
-    
-    
 }
 
 @end

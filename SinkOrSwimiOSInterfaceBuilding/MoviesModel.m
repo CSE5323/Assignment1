@@ -2,6 +2,7 @@
 #import <JLTMDbClient.h>
 #import "MoviesModel.h"
 
+
 @interface MoviesModel()
 @property (strong,nonatomic) NSString* currentCategory; //kJLTMDbMoviePopular, kJLTMDbMovieUpcoming, kJLTMDbMovieTopRated
 @property (strong,nonatomic) NSArray* moviesArray;
@@ -28,6 +29,8 @@
     if (self != nil) {
         self.movieCategoriesArray = @[kJLTMDbMoviePopular, kJLTMDbMovieUpcoming, kJLTMDbMovieTopRated];
         self.currentCategory = kJLTMDbMoviePopular;
+        self.maxNumberOfMovies = 10;
+        self.fontSize = 20;
         if([self.moviesArray count] == 0){
             [self getMoviesConfiguration];
             [self fetchMovies];
@@ -52,6 +55,7 @@
     [[JLTMDbClient sharedAPIInstance] GET:self.currentCategory withParameters:nil andResponseBlock:^(id response, NSError *error) {
         if (!error) {
             self.moviesArray = response[@"results"];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"updatedMovies" object:self];
         }else{
             NSLog(@"Count not fetch movies");
         }
@@ -71,7 +75,7 @@
 }
 
 -(NSInteger)getTotalNumOfMovies {
-    return [self.moviesArray count];
+    return MIN([self.moviesArray count], self.maxNumberOfMovies);
 }
 
 -(NSDictionary*)getMovieByIndex:(NSInteger)index{
@@ -80,6 +84,8 @@
 
 -(void)setCategory:(NSString*) category{
     self.currentCategory = category;
+    [self fetchMovies];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"updatedMovies" object:self];
 };
 
 

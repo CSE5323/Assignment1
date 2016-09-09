@@ -23,5 +23,7 @@
 
 //Public properties
 @property (copy, nonatomic) NSString *imagesBaseUrlString;
+@property (nonatomic, assign) NSInteger maxNumberOfMovies;
+@property (nonatomic, assign) NSInteger fontSize;
 
 @end

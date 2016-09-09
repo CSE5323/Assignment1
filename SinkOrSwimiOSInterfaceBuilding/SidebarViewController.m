@@ -140,7 +140,10 @@
     UINavigationController *navController2 = (UINavigationController *)segue.destinationViewController;
     
     CollectionViewController *collection_controller = (CollectionViewController *)navController2.topViewController;
+    
     MoviesTableViewController *controller = (MoviesTableViewController *)navController.topViewController;
+    
+    UISwitch *mySwitch = (UISwitch *)sender;
     
     
     if( [name  isEqual: @"popularMovies"] ) {
@@ -157,22 +160,25 @@
         } else if([self.numMoviesPicker.description isEqualToString:@"20"]) {
             controller.numMovies = 20;
         }
+    } else if([name isEqual: @"viewType"]) {
+        if([mySwitch isOn]) {
+        
+            NSLog(@"fghjfg");
+            [self.navigationController performSegueWithIdentifier:@"second_segue" sender:self];
+            
+        }
+        if(![mySwitch isOn]) {
+            NSLog(@"wtf");
+            [controller performSegueWithIdentifier:@"first_segue" sender:self];
+
+        }
+        
     }
 
+
+
     
-    UISwitch *mySwitch = (UISwitch *)sender;
     
-    if([mySwitch isOn])
-    {
-        
-        [self.navigationController performSegueWithIdentifier:@"second_segue" sender:self];
-    }
-    else {
-        NSLog(@"ASFGDHJK");
-//        [self.navigationController performSegueWithIdentifier:@"first_segue" sender:self];
-        [controller performSegueWithIdentifier:@"first_segue" sender:self];
-//        [self.navigationController pushViewController:controller animated:YES];
-    }
     
     
     

@@ -3,7 +3,7 @@
 #import "MovieDetailsViewController.h"
 #import "MovieReviewViewController.h"
 #import "MovieReview.h"
-#import "ViewController.h"
+#import "MovieCoverBigViewController.h"
 
 @interface MovieDetailsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *reviewsTable;
@@ -43,9 +43,10 @@
                 imageBackdrop = [self.imagesBaseUrlString stringByReplacingOccurrencesOfString:@"w92" withString:@"w500"];
                 [self.movieCoverImageView setImageWithURL:[NSURL URLWithString:[imageBackdrop stringByAppendingString:self.movieDict[@"poster_path"]]]];
             }
-        }else
-            NSLog(@"this sucks");
-//            [errorAlertView show];
+        }else{
+            NSLog([NSString stringWithFormat:@"%@%@", @"Cannot get movie with ID#",
+                   self.movieId]);
+        }
     }];
     
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected)];
@@ -62,7 +63,7 @@
 
 -(void)tapDetected{
     NSLog(@"single Tap on imageview");
-    [self performSegueWithIdentifier:@"MySegue" sender:self];
+    [self performSegueWithIdentifier:@"MovieBigCoverSeque" sender:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -84,16 +85,17 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
-    BOOL isVC = [[segue destinationViewController] isKindOfClass:[ViewController class]];
-    UIImage* my_image;
+    BOOL isBigCoverView = [[segue destinationViewController] isKindOfClass:[MovieCoverBigViewController class]];
     
-    if(isVC){
-//        UITableViewCell* cell = (UITableViewCell*)sender;
-        ViewController *vc = [segue destinationViewController];
-        my_image = [UIImage imageWithData:UIImagePNGRepresentation(self.movieCoverImageView.image)];
+    
+    if(isBigCoverView){
+        UIImage* movie_cover_big_image;
         
-        vc.image = my_image;
-//        [vc.imageView setImage:my_image];
+        MovieCoverBigViewController *vc = [segue destinationViewController];
+        
+        movie_cover_big_image = [UIImage imageWithData:UIImagePNGRepresentation(self.movieCoverImageView.image)];
+        
+        vc.image = movie_cover_big_image;
     }
 }
 

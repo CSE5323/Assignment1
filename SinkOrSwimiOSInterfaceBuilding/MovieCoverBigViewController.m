@@ -1,25 +1,17 @@
-//
-//  ViewController.m
-//  SinkOrSwimiOSInterfaceBuilding
-//
-//  Created by Ashley Isles on 9/8/16.
-//  Copyright © 2016 Mobile Design Group. All rights reserved.
-//
 #import <UIImageView+AFNetworking.h>
 #import <JLTMDbClient.h>
-#import "ViewController.h"
+#import "MovieCoverBigViewController.h"
 #import "ImageModel.h"
 #import "MovieDetailsViewController.h"
 
 
-@interface ViewController () <UIScrollViewDelegate>
+@interface MovieCoverBigViewController () <UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (strong,nonatomic) ImageModel* myImageModel;
 
 @end
 
-@implementation ViewController
+@implementation MovieCoverBigViewController
 
 
 -(UIImageView*)imageView {
@@ -28,7 +20,6 @@
     if(!_imageView)
     {
         _imageView =[[UIImageView alloc] initWithImage:self.image];
-        _imageView.frame = CGRectMake(0,0,600,600);
     }
     
     return _imageView;
@@ -38,11 +29,10 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
     
     [self.scrollView addSubview:self.imageView];
     self.scrollView.contentSize = self.imageView.image.size;
-    self.scrollView.minimumZoomScale = 0.1;
+    self.scrollView.minimumZoomScale = .1;
     self.scrollView.delegate = self;
     
 }

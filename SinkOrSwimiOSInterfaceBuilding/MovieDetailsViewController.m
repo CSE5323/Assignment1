@@ -17,11 +17,24 @@
 
 - (IBAction)clickAddReview:(id)sender {
     MovieReviewViewController *movieReviewViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MovieReviewViewController"];
+    movieReviewViewController.movieTitle = self.movieTitle;
     [self.navigationController pushViewController:movieReviewViewController animated:YES];
+}
+
+-(void)checkRes:(NSNotification *)notification
+{
+    if ([[notification name] isEqualToString:@"updatedReviews"])
+    {
+        NSLog(@"MovieDetailsViewController.checkRes updatedReviews");
+        [self setReviewsLabel];
+    }
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSLog(@"MovieDetailsViewController.viewDidLoad");
+    
     // Do any additional setup after loading the view.
     self.navigationItem.title = self.movieTitle;
     __block NSString *imageBackdrop;
@@ -56,7 +69,20 @@
     [self.movieCoverImageView addGestureRecognizer:singleTap];
     
     //Avg reviews label default
-    self.avgReviewsLabel.text = @"Avg Reviews - 5";
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updatedReviews" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkRes:) name:@"updatedReviews" object:nil];
+    [self setReviewsLabel];
+}
+
+-(void)setReviewsLabel{
+    NSMutableArray* movieReviews = [MovieReviewViewController getReviewsByTitle:self.movieTitle];
+    if([movieReviews count] == 0){
+        self.avgReviewsLabel.text = @"Avg Reviews - 0";
+    }else{
+        NSNumber *avgReview = [movieReviews valueForKeyPath:@"@avg.self"];
+        self.avgReviewsLabel.text = [NSString stringWithFormat: @"Avg Reviews - %.2g", [avgReview doubleValue]];
+    }
+    
 }
 
 

@@ -39,7 +39,7 @@
 
 -(NSArray*) menuItems {
     if(!_menuItems) {
-        _menuItems = @[@"title", @"popularMovies", @"upcomingMovies", @"topRatedMovies", @"appSettings", @"viewType", @"movieTextFontSize", @"movieTextFontSizeStepper", @"numOfMovies"];
+        _menuItems = @[@"title", @"popularMovies", @"upcomingMovies", @"topRatedMovies", @"appSettings", @"backgroundChanging", @"backgroundChangingStepper", @"movieTextFontSize", @"movieTextFontSizeStepper",@"numOfMovies"];
     }
     return _menuItems;
 }
@@ -127,19 +127,12 @@
     
     NSString *name = [self.menuItems objectAtIndex:indexPath.row];
     
-
-
-//    UINavigationController *navController = (UINavigationController*)[segue destinationViewController];
-//    MoviesCollectionViewController *eventsController = (MoviesCollectionViewController*)[navController topViewController];
-    
     if( [name isEqual: @"popularMovies"] ) {
         [self.myMoviesModel setCategory:kJLTMDbMoviePopular];
     } else if( [name isEqual: @"upcomingMovies"] ) {
         [self.myMoviesModel setCategory:kJLTMDbMovieUpcoming];
     } else if( [name isEqual: @"topRatedMovies"] ) {
         [self.myMoviesModel setCategory:kJLTMDbMovieTopRated];
-    } else if( [name isEqual: @"viewType"] ) {
-//        [self.myMoviesModel setCategory:kJLTMDbMovieTopRated];
     }
 }
 

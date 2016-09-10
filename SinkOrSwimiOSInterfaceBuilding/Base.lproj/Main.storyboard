@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Movies Collection-->
+        <!--Movie Covers-->
         <scene sceneID="7aF-Zp-s9b">
             <objects>
                 <collectionViewController restorationIdentifier="MoviesCollectionViewController" storyboardIdentifier="MoviesCollectionViewController" id="Rua-Bx-jeh" customClass="MoviesCollectionViewController" sceneMemberID="viewController">
@@ -51,7 +51,7 @@
                         </connections>
                     </collectionView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Movies Collection" id="Dli-Lo-4A1"/>
+                    <navigationItem key="navigationItem" title="Movie Covers" id="Dli-Lo-4A1"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -329,7 +329,7 @@
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="movieTextFontSizeStepper" id="5IW-JQ-OMc">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="backgroundChangingStepper" id="5IW-JQ-OMc">
                                         <rect key="frame" x="0.0" y="264" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5IW-JQ-OMc" id="IEQ-rg-nf0">

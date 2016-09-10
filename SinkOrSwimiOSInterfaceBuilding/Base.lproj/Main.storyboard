@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Cover View-->
+        <!--Movies Collection-->
         <scene sceneID="7aF-Zp-s9b">
             <objects>
                 <collectionViewController restorationIdentifier="MoviesCollectionViewController" storyboardIdentifier="MoviesCollectionViewController" id="Rua-Bx-jeh" customClass="MoviesCollectionViewController" sceneMemberID="viewController">
@@ -22,7 +22,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieBannerCell" id="WcD-at-RBI" customClass="CollectionViewCell">
-                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                <rect key="frame" x="0.0" y="64" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -50,9 +50,10 @@
                             <outlet property="delegate" destination="Rua-Bx-jeh" id="Cdp-xh-uCV"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Cover View" id="Dli-Lo-4A1">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="Txg-mX-olz" userLabel="Sidebar Button"/>
-                    </navigationItem>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Movies Collection" id="Dli-Lo-4A1"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="VbI-O7-5xz" kind="show" identifier="first_segue" id="Dy4-sE-8q4"/>
                     </connections>
@@ -61,12 +62,17 @@
             </objects>
             <point key="canvasLocation" x="292" y="1669"/>
         </scene>
-        <!--Movies-->
+        <!--Movies Table-->
         <scene sceneID="0Gp-qL-SWs">
             <objects>
                 <tableViewController storyboardIdentifier="MoviesTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VbI-O7-5xz" customClass="MoviesTableViewController" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Movies" id="uNd-rX-80u">
+                    <navigationItem key="navigationItem" title="Movies Table" id="uNd-rX-80u">
                         <barButtonItem key="leftBarButtonItem" image="menu" id="2AJ-Bw-4a7"/>
+                        <barButtonItem key="rightBarButtonItem" title="Covers" id="6tW-cM-8l9">
+                            <connections>
+                                <action selector="coversClicked:" destination="VbI-O7-5xz" id="5Nx-KA-vGh"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="mainNavItem" destination="uNd-rX-80u" id="UV1-tg-TC6"/>
@@ -160,7 +166,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <pickerView key="tableFooterView" contentMode="scaleToFill" id="42p-HI-4oM">
-                            <rect key="frame" x="0.0" y="396" width="600" height="140"/>
+                            <rect key="frame" x="0.0" y="440" width="600" height="140"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </pickerView>
                         <sections>
@@ -173,8 +179,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="MOVIES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rR-Wq-FZA">
-                                                    <rect key="frame" x="18" y="8" width="574" height="28"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MOVIES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rR-Wq-FZA">
+                                                    <rect key="frame" x="18" y="8" width="574" height="27"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -195,8 +201,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Popular Movies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GTy-ZR-CvI">
-                                                    <rect key="frame" x="28" y="8" width="564" height="28"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Popular Movies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GTy-ZR-CvI">
+                                                    <rect key="frame" x="28" y="8" width="564" height="27"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -220,8 +226,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Upcoming Movies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mqp-rm-l1g">
-                                                    <rect key="frame" x="28" y="8" width="564" height="28"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upcoming Movies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mqp-rm-l1g">
+                                                    <rect key="frame" x="28" y="8" width="564" height="27"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -245,8 +251,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Top Rated Movies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r04-S2-Cj7">
-                                                    <rect key="frame" x="28" y="8" width="145" height="28"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top Rated Movies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r04-S2-Cj7">
+                                                    <rect key="frame" x="28" y="8" width="145" height="27"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -269,8 +275,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="APP SETTINGS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUO-zb-kzU">
-                                                    <rect key="frame" x="18" y="8" width="574" height="28"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="APP SETTINGS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUO-zb-kzU">
+                                                    <rect key="frame" x="18" y="8" width="574" height="27"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -292,35 +298,26 @@
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="viewType" id="4sK-7c-VRS">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="backgroundChanging" id="4sK-7c-VRS">
                                         <rect key="frame" x="0.0" y="220" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4sK-7c-VRS" id="iTZ-6H-aq2">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Collection View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dL4-5g-Qc1">
-                                                    <rect key="frame" x="28" y="8" width="118" height="28"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Background Changing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dL4-5g-Qc1">
+                                                    <rect key="frame" x="28" y="8" width="170" height="27"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Xeu-5m-dcL">
-                                                    <rect key="frame" x="156" y="8" width="51" height="28"/>
-                                                    <connections>
-                                                        <action selector="collectionSwitcherChanged:" destination="OUK-KP-YoS" eventType="valueChanged" id="GK4-Rb-Ykp"/>
-                                                    </connections>
-                                                </switch>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Xeu-5m-dcL" secondAttribute="trailing" id="15Q-b4-HQO"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="dL4-5g-Qc1" secondAttribute="bottom" id="7IE-JT-jqa"/>
                                                 <constraint firstItem="dL4-5g-Qc1" firstAttribute="leading" secondItem="iTZ-6H-aq2" secondAttribute="leadingMargin" constant="25" id="7VN-XG-DX2"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="dL4-5g-Qc1" secondAttribute="trailing" id="Hyy-58-u05"/>
                                                 <constraint firstItem="dL4-5g-Qc1" firstAttribute="top" secondItem="iTZ-6H-aq2" secondAttribute="topMargin" id="VUR-jr-pXU"/>
                                                 <constraint firstItem="dL4-5g-Qc1" firstAttribute="leading" secondItem="iTZ-6H-aq2" secondAttribute="leadingMargin" constant="20" id="X1M-jr-8jp"/>
-                                                <constraint firstItem="Xeu-5m-dcL" firstAttribute="top" secondItem="dL4-5g-Qc1" secondAttribute="top" id="p8e-J5-7uv"/>
-                                                <constraint firstItem="Xeu-5m-dcL" firstAttribute="leading" secondItem="dL4-5g-Qc1" secondAttribute="trailing" constant="10" id="phe-vc-ZDa"/>
                                                 <constraint firstItem="dL4-5g-Qc1" firstAttribute="bottom" secondItem="iTZ-6H-aq2" secondAttribute="bottomMargin" id="sCb-mi-FOc"/>
                                                 <constraint firstItem="dL4-5g-Qc1" firstAttribute="top" secondItem="iTZ-6H-aq2" secondAttribute="topMargin" id="tkf-Os-7JE"/>
                                             </constraints>
@@ -328,20 +325,40 @@
                                                 <mask key="constraints">
                                                     <exclude reference="7VN-XG-DX2"/>
                                                     <exclude reference="Hyy-58-u05"/>
-                                                    <exclude reference="15Q-b4-HQO"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="movieTextFontSize" id="fse-2R-zDR">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="movieTextFontSizeStepper" id="5IW-JQ-OMc">
                                         <rect key="frame" x="0.0" y="264" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5IW-JQ-OMc" id="IEQ-rg-nf0">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xqz-a9-smn">
+                                                    <rect key="frame" x="48" y="8" width="51" height="27"/>
+                                                    <connections>
+                                                        <action selector="collectionSwitcherChanged:" destination="OUK-KP-YoS" eventType="valueChanged" id="exH-pO-gPa"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="xqz-a9-smn" secondAttribute="bottom" id="DMC-ha-efi"/>
+                                                <constraint firstItem="xqz-a9-smn" firstAttribute="leading" secondItem="IEQ-rg-nf0" secondAttribute="leadingMargin" constant="40" id="K4u-bY-jLd"/>
+                                                <constraint firstItem="xqz-a9-smn" firstAttribute="top" secondItem="IEQ-rg-nf0" secondAttribute="topMargin" id="PmR-9f-84e"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="movieTextFontSize" id="fse-2R-zDR">
+                                        <rect key="frame" x="0.0" y="308" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fse-2R-zDR" id="8oi-mN-NDb">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Movie Text Font Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODQ-g7-I17">
-                                                    <rect key="frame" x="28" y="8" width="197" height="28"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Text Font Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODQ-g7-I17">
+                                                    <rect key="frame" x="28" y="8" width="158" height="27"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -365,20 +382,20 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="movieTextFontSizeStepper" id="2xd-TD-xf9">
-                                        <rect key="frame" x="0.0" y="308" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="352" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2xd-TD-xf9" id="8zO-py-ndO">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="20" minimumValue="13" maximumValue="26" translatesAutoresizingMaskIntoConstraints="NO" id="CWp-fV-5ZS">
-                                                    <rect key="frame" x="74" y="8" width="94" height="29"/>
+                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="20" minimumValue="13" maximumValue="26" translatesAutoresizingMaskIntoConstraints="NO" id="CWp-fV-5ZS">
+                                                    <rect key="frame" x="77" y="8" width="94" height="29"/>
                                                     <connections>
                                                         <action selector="movieTextFontSizeStepperChanged:" destination="OUK-KP-YoS" eventType="valueChanged" id="aBl-OI-rSv"/>
                                                     </connections>
                                                 </stepper>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmN-CU-XNZ">
-                                                    <rect key="frame" x="45" y="8" width="21" height="28"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmN-CU-XNZ">
+                                                    <rect key="frame" x="48" y="8" width="21" height="27"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -402,14 +419,14 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="numOfMovies" id="G53-UI-Cfw">
-                                        <rect key="frame" x="0.0" y="352" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="396" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G53-UI-Cfw" id="IvK-LX-nQe">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Number of Movies Shown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4I-aO-KT8">
-                                                    <rect key="frame" x="28" y="8" width="197" height="28"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Movies Shown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4I-aO-KT8">
+                                                    <rect key="frame" x="28" y="8" width="197" height="27"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -441,7 +458,6 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <outlet property="collectionSwitcher" destination="Xeu-5m-dcL" id="EIN-4M-NTe"/>
                         <outlet property="fontSizeLabel" destination="jmN-CU-XNZ" id="MrF-Xq-9uv"/>
                         <outlet property="movieTextFontSizeStepper" destination="CWp-fV-5ZS" id="Xa5-zw-2yI"/>
                         <outlet property="numMoviesPicker" destination="42p-HI-4oM" id="Whb-Iz-es7"/>

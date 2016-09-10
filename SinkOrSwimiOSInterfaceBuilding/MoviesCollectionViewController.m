@@ -1,6 +1,7 @@
 #import <UIImageView+AFNetworking.h>
 #import <JLTMDbClient.h>
 #import "MoviesCollectionViewController.h"
+#import "MoviesTableViewController.h"
 #import "MoviesModel.h"
 #import "CollectionViewCell.h"
 
@@ -25,6 +26,7 @@ static NSString * const reuseIdentifier = @"MovieBannerCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"MoviesTableViewController.viewDidLoad");
 }
 
 - (void)didReceiveMemoryWarning {

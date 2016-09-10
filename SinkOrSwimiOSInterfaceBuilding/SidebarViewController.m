@@ -9,6 +9,7 @@
 #import "SidebarViewController.h"
 #import "MoviesTableViewController.h"
 #import "MoviesCollectionViewController.h"
+#import "MovieReviewViewController.h"
 #import "MoviesModel.h"
 #import <JLTMDbClient.h>
 
@@ -74,14 +75,12 @@
 }
 - (IBAction)collectionSwitcherChanged:(id)sender {
     NSLog(@"SidebarViewController.collectionSwitcherChanged");
-    if([self.collectionSwitcher isOn]) {
-        MoviesCollectionViewController *moviesCollectionViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MoviesCollectionViewController"];
-        [self.navigationController pushViewController:moviesCollectionViewController animated:YES];
-    }else{
-        MoviesTableViewController *moviesTableViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MoviesTableViewController"];
-        [self.navigationController pushViewController:moviesTableViewController animated:YES];
+    UISwitch *backgroundColorSwitch = (UISwitch *)sender;
+    if ([backgroundColorSwitch isOn]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"addBackgroundTimer" object:self];
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"removeBackgroundTimer" object:self];
     }
-    
 }
 
 

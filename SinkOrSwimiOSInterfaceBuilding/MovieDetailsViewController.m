@@ -7,7 +7,9 @@
 #import "MovieCoverBigViewController.h"
 
 @interface MovieDetailsViewController ()
-@property (weak, nonatomic) IBOutlet UITableView *reviewsTable;
+@property (weak, nonatomic) IBOutlet UIImageView *movieCoverImageView;
+@property (weak, nonatomic) IBOutlet UITextView *movieDescriptionTextView;
+@property (weak, nonatomic) IBOutlet UILabel *avgReviewsLabel;
 
 @end
 
@@ -55,10 +57,8 @@
     [self.movieCoverImageView setUserInteractionEnabled:YES];
     [self.movieCoverImageView addGestureRecognizer:singleTap];
     
-    
-    
-    //setting up reviews table
-    self.reviewsTable.rowHeight = 40.0f;
+    //Avg reviews label default
+    self.avgReviewsLabel.text = @"Avg Reviews - 5";
 }
 
 

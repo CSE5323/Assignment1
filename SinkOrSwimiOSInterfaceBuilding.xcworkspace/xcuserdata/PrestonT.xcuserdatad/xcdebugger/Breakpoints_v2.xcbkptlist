@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SinkOrSwimiOSInterfaceBuilding/MovieDetailsViewController.m"
-            timestampString = "495097791.545323"
+            timestampString = "495157494.949659"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -62,7 +62,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "18"
-            endingLineNumber = "18">
+            endingLineNumber = "18"
+            landmarkName = "-myMoviesModel"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -76,7 +78,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "41"
-            endingLineNumber = "41">
+            endingLineNumber = "41"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -122,7 +126,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "96"
-            endingLineNumber = "96">
+            endingLineNumber = "96"
+            landmarkName = "-tableView:numberOfRowsInSection:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -152,7 +158,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "73"
-            endingLineNumber = "73">
+            endingLineNumber = "73"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -166,7 +174,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "26"
-            endingLineNumber = "26">
+            endingLineNumber = "26"
+            landmarkName = "-checkRes:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -180,7 +190,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "118"
-            endingLineNumber = "118">
+            endingLineNumber = "118"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -194,7 +206,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "111"
-            endingLineNumber = "111">
+            endingLineNumber = "111"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -224,7 +238,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "113"
-            endingLineNumber = "113">
+            endingLineNumber = "113"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -287,7 +303,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "130"
             endingLineNumber = "130"
-            landmarkName = "-pickerView:titleForRow:forComponent:"
+            landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -303,7 +319,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "131"
             endingLineNumber = "131"
-            landmarkName = "-pickerView:titleForRow:forComponent:"
+            landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -336,6 +352,54 @@
             startingLineNumber = "60"
             endingLineNumber = "60"
             landmarkName = "-collectionView:cellForItemAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SinkOrSwimiOSInterfaceBuilding/MovieDetailsViewController.m"
+            timestampString = "495156952.778677"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "-viewDidLayoutSubviews"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SinkOrSwimiOSInterfaceBuilding/SidebarViewController.m"
+            timestampString = "495150798.435741"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "-prepareForSegue:sender:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SinkOrSwimiOSInterfaceBuilding/SidebarViewController.m"
+            timestampString = "495150842.438851"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "-collectionSwitcherChanged:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

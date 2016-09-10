@@ -79,9 +79,6 @@
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
     
-    //Default # of movies at 10
-    self.myMoviesModel.maxNumberOfMovies = 10;
-    
     //Set view title
     self.mainNavItem.title = [self.myMoviesModel getMovieCategoryTitle];
     

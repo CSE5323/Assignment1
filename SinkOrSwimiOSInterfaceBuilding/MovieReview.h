@@ -14,11 +14,10 @@
 
 @interface MovieReview : NSObject
 
--(MovieReview*)initWithEverything: (NSString*)reviewTitle: (NSInteger) movieRating: (NSString*)description;
+-(MovieReview*)initWithEverything: (NSInteger)movieRating;
 
--(NSString*)getTitle;
--(NSInteger)getRating;
--(NSString*)getDescription;
+@property (nonatomic, assign) NSInteger rating;
+
 
 @end
 

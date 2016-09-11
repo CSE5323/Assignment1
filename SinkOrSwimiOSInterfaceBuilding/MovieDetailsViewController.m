@@ -7,36 +7,48 @@
 #import "MovieCoverBigViewController.h"
 
 @interface MovieDetailsViewController ()
-@property (weak, nonatomic) IBOutlet UITableView *reviewsTable;
+@property (weak, nonatomic) IBOutlet UIImageView *movieCoverImageView;
+@property (weak, nonatomic) IBOutlet UITextView *movieDescriptionTextView;
+@property (weak, nonatomic) IBOutlet UILabel *avgReviewsLabel;
 
 @end
 
 @implementation MovieDetailsViewController
 
-@synthesize movieReviews = _movieReviews;
-
--(NSMutableArray*)movieReviews{
-    
-    if(!_movieReviews)
-        _movieReviews = [[NSMutableArray alloc] init];
-    
-    return _movieReviews;
-}
-
 - (IBAction)clickAddReview:(id)sender {
     MovieReviewViewController *movieReviewViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MovieReviewViewController"];
+    movieReviewViewController.movieTitle = self.movieTitle;
     [self.navigationController pushViewController:movieReviewViewController animated:YES];
+}
+
+-(void)checkRes:(NSNotification *)notification
+{
+    if ([[notification name] isEqualToString:@"updatedReviews"])
+    {
+        NSLog(@"MovieDetailsViewController.checkRes updatedReviews");
+        [self setReviewsLabel];
+    }
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSLog(@"MovieDetailsViewController.viewDidLoad");
+    
     // Do any additional setup after loading the view.
     self.navigationItem.title = self.movieTitle;
     __block NSString *imageBackdrop;
-//    __block UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please try again later", @"") delegate:self cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Ok", @""), nil];
+    
     [[JLTMDbClient sharedAPIInstance] GET:kJLTMDbMovie withParameters:@{@"id":self.movieId} andResponseBlock:^(id response, NSError *error) {
         if (!error) {
             self.movieDict = response;
+            
+            //Movie description text
+            self.movieDescriptionTextView.text = self.movieDict[@"overview"];
+            self.movieDescriptionTextView.font = [UIFont systemFontOfSize:14];
+            self.movieDescriptionTextView.textColor = [UIColor lightGrayColor];
+            
+            //Movie cover image view
             if (self.movieDict[@"backdrop_path"] != [NSNull null]){
                 imageBackdrop = [[MoviesModel sharedInstance].imagesBaseUrlString stringByReplacingOccurrencesOfString:@"w92" withString:@"w780"];
                 [self.movieCoverImageView setImageWithURL:[NSURL URLWithString:[imageBackdrop stringByAppendingString:self.movieDict[@"backdrop_path"]]]];
@@ -50,20 +62,32 @@
         }
     }];
     
+    //Movie cover image click
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected)];
     singleTap.numberOfTapsRequired = 1;
     [self.movieCoverImageView setUserInteractionEnabled:YES];
     [self.movieCoverImageView addGestureRecognizer:singleTap];
     
+    //Avg reviews label default
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updatedReviews" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkRes:) name:@"updatedReviews" object:nil];
+    [self setReviewsLabel];
+}
+
+-(void)setReviewsLabel{
+    NSMutableArray* movieReviews = [MovieReviewViewController getReviewsByTitle:self.movieTitle];
+    if([movieReviews count] == 0){
+        self.avgReviewsLabel.text = @"Avg Reviews - 0";
+    }else{
+        NSNumber *avgReview = [movieReviews valueForKeyPath:@"@avg.self"];
+        self.avgReviewsLabel.text = [NSString stringWithFormat: @"Avg Reviews - %.2g", [avgReview doubleValue]];
+    }
     
-    
-    //setting up reviews table
-    self.reviewsTable.rowHeight = 40.0f;
 }
 
 
 -(void)tapDetected{
-    NSLog(@"single Tap on imageview");
+    NSLog(@"MovieDetailsViewController.tapDetected");
     [self performSegueWithIdentifier:@"MovieBigCoverSeque" sender:self];
 }
 
@@ -74,43 +98,20 @@
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    self.movieDescriptionTextView.text = self.movieDict[@"overview"];
-    self.movieDescriptionTextView.font = [UIFont systemFontOfSize:14];
-    self.movieDescriptionTextView.textColor = [UIColor lightGrayColor];
     
 }
 
-- (NSInteger)tableView:(UITableView *)reviesTable numberOfRowsInSection:(NSInteger)section {
-    return self.movieReviews.count;
-}
-
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    NSLog(@"MovieDetailsViewController.prepareForSegue");
     
     BOOL isBigCoverView = [[segue destinationViewController] isKindOfClass:[MovieCoverBigViewController class]];
     
 
     if(isBigCoverView){
-        UIImage* movie_cover_big_image;
-        
         MovieCoverBigViewController *vc = [segue destinationViewController];
         
-        movie_cover_big_image = [UIImage imageWithData:UIImagePNGRepresentation(self.movieCoverImageView.image)];
-        
-        vc.image = movie_cover_big_image;
+        vc.image = self.movieCoverImageView.image;
     }
-}
-
-- (UITableViewCell *)tableView:(UITableView *)reviewsTable cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"MovieCell";
-    
-    UITableViewCell *cell = [reviewsTable dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (!cell)
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    
-    cell.textLabel.text = [self.movieReviews[indexPath.row] getTitle];
-    cell.textLabel.textColor = [UIColor darkGrayColor];
-    cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
-    return cell;
 }
 
 @end

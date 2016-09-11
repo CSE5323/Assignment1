@@ -1,6 +1,7 @@
 #import <UIImageView+AFNetworking.h>
 #import <JLTMDbClient.h>
 #import "MoviesTableViewController.h"
+#import "MoviesCollectionViewController.h"
 #import "MoviesModel.h"
 #import "MovieDetailsViewController.h"
 
@@ -8,9 +9,15 @@
 @interface MoviesTableViewController ()
 
 @property (strong,nonatomic) MoviesModel* myMoviesModel;
+@property (strong,nonatomic) NSTimer* backgroundTimer;
 @end
 
 @implementation MoviesTableViewController
+- (IBAction)coversClicked:(id)sender {
+    NSLog(@"MoviesTableViewController.collectionClicked");
+    MoviesCollectionViewController *moviesCollectionViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MoviesCollectionViewController"];
+    [self.navigationController pushViewController:moviesCollectionViewController animated:YES];
+}
 
 -(MoviesModel*)myMoviesModel{
     
@@ -25,7 +32,19 @@
     if ([[notification name] isEqualToString:@"updatedMovies"])
     {
         [self.tableView reloadData];
+    }else if ([[notification name] isEqualToString:@"removeBackgroundTimer"])
+    {
+        [self.backgroundTimer invalidate];
+        self.tableView.backgroundColor = [UIColor whiteColor];
+        self.backgroundTimer = nil;;
+    }else if ([[notification name] isEqualToString:@"addBackgroundTimer"])
+    {
+        [self addBackgroundTimer];
     }
+}
+-(void)addBackgroundTimer{
+    self.backgroundTimer = [NSTimer scheduledTimerWithTimeInterval: 1 target:self selector:@selector(randomlyChangeBackgroundColor) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:self.backgroundTimer forMode:NSRunLoopCommonModes];
 }
 
 - (void)randomlyChangeBackgroundColor{
@@ -44,12 +63,11 @@
     self.tableView.rowHeight = 60.0f;
     
     //Randomly change background color
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval: 1 target:self selector:@selector(randomlyChangeBackgroundColor) userInfo:nil repeats:YES];
-    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
-    
-    //Refresh when pulling down from top
-//    self.refreshControl = [[UIRefreshControl alloc] init];
-//    [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+    [self addBackgroundTimer];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"removeBackgroundTimer" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkRes:) name:@"removeBackgroundTimer" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"addBackgroundTimer" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkRes:) name:@"addBackgroundTimer" object:nil];
     
     //Sidebar menu
     SWRevealViewController *revealViewController = self.revealViewController;
@@ -60,9 +78,6 @@
         [self.sidebarButton setAction: @selector( revealToggle: )];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
-    
-    //Default # of movies at 10
-    self.myMoviesModel.maxNumberOfMovies = 10;
     
     //Set view title
     self.mainNavItem.title = [self.myMoviesModel getMovieCategoryTitle];
@@ -134,9 +149,6 @@
     movieDetailViewController.movieTitle = movieDict[@"title"];
     [self.navigationController pushViewController:movieDetailViewController animated:YES];
 }
-
-
-
 
 
 @end
